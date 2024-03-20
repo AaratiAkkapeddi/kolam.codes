@@ -300,7 +300,16 @@ function draw() {
   stroke(255);
   strokeWeight(3);
 
+//handle middle
+    push()
+    stroke("darksalmon")
+    if(blank.length == 1){
+     
+        ellipse(blank[0][0], blank[0][1], dotRadius * 6)
 
+    }
+    pop()
+   
   
   for (let i = 0; i < kolams.length; i++) {
     kolams[i].draw();
@@ -370,7 +379,7 @@ class KolamDot {
     let x;
     let y;
     if (this.c) {
-      stroke("#ffc668");
+      stroke("peachpuff");
       x = coords3[this.index][0];
       y = coords3[this.index][1];
     } else {
