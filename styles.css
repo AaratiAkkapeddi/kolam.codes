@@ -8,3 +8,28 @@ body{
 main{
     margin: 24px;
 }
+h2{
+    font-weight: normal;
+}
+input{
+    font-size: 24px;
+    padding: 3px 5px;
+    width: 500px;
+    margin-top:24px;
+    color:whitesmoke;
+    text-transform: lowercase;
+    background-color: black;
+    border:1px solid whitesmoke;
+}
+button{
+    background-color: black;
+    color:whitesmoke;
+    border:1px solid whitesmoke;
+    padding: 3px 5px;
+    font-size: 24px;
+
+}
+canvas{
+    display: block;
+    margin-top:24px;
+}

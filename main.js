@@ -95,17 +95,13 @@ function insertSpaces(bincode){
 
         for (let i=0; i < nearest_sq; i++){
             let start = consecutive(startingrow + i)
-            // let d = Math.abs((startingrow + i) - (centerDot));
-            // d = d * 2;
-            // let rowDots = dotCount - d  
             let rowDots = getRowDots(startingrow+i)  
             let newrowDots = nearest_sq - (2 * Math.abs(i - Math.floor(nearest_sq/2)));
             let half = (rowDots - newrowDots)/2
             start = start + half;
             txt2 = txt2.slice(0, start) + ".".repeat(newrowDots) + txt2.slice(start);
         }
-        console.log(txt2)
-        //it can be centered one line
+
     }else{
         if(isCenteredSqrNum(diff - 4)){
             let nearest_sq = isCenteredSqrNum(diff - 4); //5
@@ -115,9 +111,6 @@ function insertSpaces(bincode){
             txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
             for (let i=0; i < nearest_sq; i++){
                 let start = consecutive(startingrow + i)
-                // let d = Math.abs((startingrow + i) - (centerDot));
-                // d = d * 2;
-                // let rowDots = dotCount - d  
                 let rowDots = getRowDots(startingrow + i)  
                 let newrowDots = nearest_sq - (2 * Math.abs(i - Math.floor(nearest_sq/2)));
                 if(i == Math.floor(nearest_sq/2)){
@@ -151,12 +144,42 @@ function insertSpaces(bincode){
                 txt2 = txt2.slice(0, start) + ".".repeat(newrowDots) + txt2.slice(start);
 
             }
-            
-            //bottom tail
 
             start = consecutive(startingrow + (nearest_sq)) + ((getRowDots((startingrow + (nearest_sq))) - 1 ) / 2);
             txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
             start = consecutive(startingrow + (nearest_sq) + 1) + ((getRowDots((startingrow + (nearest_sq) + 1)) - 1 ) / 2);
+            txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+            
+
+
+        }else if(isCenteredSqrNum(diff - 12)){
+            let nearest_sq = isCenteredSqrNum(diff - 12); //5
+            let startingrow = (dotCount - nearest_sq)/2;
+            let startingCount = consecutive(startingrow)
+            start = consecutive(startingrow - 2) - ((getRowDots(startingrow - 2) - 1) /2 );
+            txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+            start = consecutive(startingrow - 1) - ((getRowDots(startingrow - 1) - 1) /2 );
+            txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+            start = startingCount - ((getRowDots(startingrow) - 1) /2 );
+            txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+            for (let i=0; i < nearest_sq; i++){
+                let start = consecutive(startingrow + i)  
+                let rowDots = getRowDots(startingrow + i)  
+                let newrowDots = nearest_sq - (2 * Math.abs(i - Math.floor(nearest_sq/2)));
+                if(i == Math.floor(nearest_sq/2)){
+                    newrowDots = newrowDots + 6
+                }
+                let half = (rowDots - newrowDots)/2
+                start = start + half;
+                txt2 = txt2.slice(0, start) + ".".repeat(newrowDots) + txt2.slice(start);
+
+            }
+
+            start = consecutive(startingrow + (nearest_sq)) + ((getRowDots((startingrow + (nearest_sq))) - 1 ) / 2);
+            txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+            start = consecutive(startingrow + (nearest_sq) + 1) + ((getRowDots((startingrow + (nearest_sq) + 1)) - 1 ) / 2);
+            txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+            start = consecutive(startingrow + (nearest_sq) + 2) + ((getRowDots((startingrow + (nearest_sq) + 2)) - 1 ) / 2);
             txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
             
 
@@ -168,7 +191,7 @@ function insertSpaces(bincode){
     }
     return(txt2)
 }
-
+let textbox, button;
 let dotCount; //has to be an odd number
 let middle = 0;
 let coords = []; //all dots
@@ -234,29 +257,45 @@ function makeGrid() {
 /******* p5 code **********/
 /**************************/
 function setup() {
+    textbox = createInput();
+    rectMode(CENTER);
+    angleMode(DEGREES);
+    frameRate(5);
+  
+    button = createButton('submit');
+    button.mousePressed(generate);
+    textbox.parent("kolam")
+    button.parent("kolam")
+
+    let c = createCanvas(window.innerHeight/2, window.innerHeight/2);
+    c.parent("kolam")
+    textAlign(CENTER);
+    textSize(50);
+
+    noLoop();
+ 
+ 
+}
+
+function draw() {
+  coords = []; //all dots
+  coords2 = []; //the 1's
+  coords3 = []; //the 0's
+  kolams = []; //the 1's
+  kolams2 = []
+  blank = []
   dotCount = getDotCount(getBinary(messageinput))[0];
   totalDots = getDotCount(getBinary(messageinput))[1];
   message = insertSpaces(getBinary(messageinput))
-  createCanvas(400, 400);
   middle = floor(dotCount / 2);
   background(0);
   makeGrid();
-  rectMode(CENTER);
-  angleMode(DEGREES);
-  frameRate(5);
-
-
-  noLoop();
   for (let i = 0; i < coords2.length; i++) {
     kolams.push(new KolamDot(i, false));
   }
   for (let i = 0; i < coords3.length; i++) {
     kolams2.push(new KolamDot(i, true));
   }
- 
-}
-
-function draw() {
   noFill();
   stroke(255);
   strokeWeight(3);
@@ -271,6 +310,11 @@ function draw() {
   }
 }
 
+function generate(){
+    messageinput = textbox.value();
+    console.log(messageinput)
+    redraw()
+}
 /**************************/
 /**** Kolam Dot Class *****/
 /**************************/
@@ -326,7 +370,7 @@ class KolamDot {
     let x;
     let y;
     if (this.c) {
-      stroke(0, 255, 0);
+      stroke("#ffc668");
       x = coords3[this.index][0];
       y = coords3[this.index][1];
     } else {
