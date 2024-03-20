@@ -1,0 +1,10 @@
+body{
+    margin:0;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 24px;
+    font-family: monospace;
+}
+main{
+    margin: 24px;
+}
