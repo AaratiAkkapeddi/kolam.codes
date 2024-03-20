@@ -14,7 +14,7 @@ h2{
 input{
     font-size: 24px;
     padding: 3px 5px;
-    width: 500px;
+    max-width: calc(100% - 50px);
     margin-top:24px;
     color:whitesmoke;
     text-transform: lowercase;
