@@ -5,6 +5,9 @@ body{
     font-size: 24px;
     font-family: monospace;
 }
+a, a:visited, a:link, a:focus{
+    color:whitesmoke;
+}
 main{
     margin: 24px;
 }
