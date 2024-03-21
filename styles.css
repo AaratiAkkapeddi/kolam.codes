@@ -8,6 +8,13 @@ body{
 a, a:visited, a:link, a:focus{
     color:whitesmoke;
 }
+img{
+    filter:invert(1);
+    max-height:60vh;
+}
+img.chart{
+    max-height: 50vh;
+}
 main{
     margin: 24px;
 }
