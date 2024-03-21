@@ -199,6 +199,7 @@ let coords2 = []; //the 1's
 let coords3 = []; //the 0's
 let kolams = []; //the 1's
 let kolams2 = []; //the 0's
+let kolamsblank = []; //the middle's
 let dotRadius = 5;
 let totalDots;
 let fw; //width and height of entire kolam based on number of dots
@@ -283,6 +284,7 @@ function draw() {
   coords3 = []; //the 0's
   kolams = []; //the 1's
   kolams2 = []
+  kolamsblank = [];
   blank = []
   dotCount = getDotCount(getBinary(messageinput))[0];
   totalDots = getDotCount(getBinary(messageinput))[1];
@@ -296,19 +298,14 @@ function draw() {
   for (let i = 0; i < coords3.length; i++) {
     kolams2.push(new KolamDot(i, true));
   }
+  for (let i = 0; i < blank.length; i++) {
+    kolamsblank.push(new KolamDot(i, "blank"));
+  }
   noFill();
   stroke(255);
   strokeWeight(3);
 
-//handle middle
-    push()
-    stroke("darksalmon")
-    if(blank.length == 1){
-     
-        ellipse(blank[0][0], blank[0][1], dotRadius * 6)
 
-    }
-    pop()
    
   
   for (let i = 0; i < kolams.length; i++) {
@@ -316,6 +313,9 @@ function draw() {
   }
   for (let i = 0; i < kolams2.length; i++) {
     kolams2[i].draw();
+  }
+  for (let i = 0; i < kolamsblank.length; i++) {
+    kolamsblank[i].draw();
   }
 }
 
@@ -337,7 +337,17 @@ class KolamDot {
 
   evaluateType() {
     let currentTypes = this.type;
-    if (this.c) {
+    if(this.c == 'blank'){
+        for (let i = 0; i < kolamsblank.length; i++) {
+            if (this.neighbors.includes(kolamsblank[i].index)) {
+              /* if a neighbor is pointing to it*/
+              let d = determineDir(kolamsblank[i].index, this.index, this.c);
+              if (kolamsblank[i].type.includes(d) && !this.type.includes(opposite(d))) {
+                this.type.push(opposite(d));
+              }
+            }
+          }
+    }else if (this.c) {
       for (let i = 0; i < kolams2.length; i++) {
         if (this.neighbors.includes(kolams2[i].index)) {
           /* if a neighbor is pointing to it*/
@@ -378,7 +388,11 @@ class KolamDot {
     strokeWeight(3);
     let x;
     let y;
-    if (this.c) {
+    if(this.c == "blank"){
+        stroke("darksalmon")
+        x = blank[this.index][0];
+        y = blank[this.index][1];
+    }else if (this.c) {
       stroke("peachpuff");
       x = coords3[this.index][0];
       y = coords3[this.index][1];
@@ -560,7 +574,10 @@ class KolamDot {
   getNeighbors(three) {
     let arr;
     let c;
-    if (three) {
+    if(three == "blank"){
+        arr = blank;
+        c = blank[this.index];
+    } else if (three) {
       arr = coords3;
       c = coords3[this.index];
     } else {
@@ -611,7 +628,10 @@ function determineDir(k, l, three) {
   if (!l) {
     return "O";
   }
-  if (three) {
+  if (three == "blank") {
+    c = blank[k]; //original
+    b = blank[l]; //neighbor
+  }else if (three) {
     c = coords3[k]; //original
     b = coords3[l]; //neighbor
   } else {
