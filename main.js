@@ -303,7 +303,7 @@ function draw() {
   }
   noFill();
   stroke(255);
-  strokeWeight(3);
+  strokeWeight(dotRadius);
 
 
    
@@ -385,7 +385,7 @@ class KolamDot {
   draw() {
     noFill();
     stroke(255);
-    strokeWeight(3);
+    strokeWeight(dotRadius);
     let x;
     let y;
     if(this.c == "blank"){
