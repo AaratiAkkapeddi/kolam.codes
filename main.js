@@ -1,11 +1,36 @@
 //BINARY CONVERTER
+function stupid(txt){
+  let bin = ""
+  let bytes = new TextEncoder("utf-8", { NONSTANDARD_allowLegacyEncoding: true }).encode(txt);
+  //bytes = bytes.split(",");
+  for(var i=0; i<bytes.length; i++)
+  {
+     var b=bytes[i].toString(2);
+     if( b.length<8 ) b='0'.repeat(8-b.length)+b;
+     bin+=b;
+  }
+  return(bin)
+
+}
+
+
 function getBinary(message){
     let input = message;
     let output = "";
-    for (let i = 0; i < input.length; i++){
-        let cc = 8 - (input[i].charCodeAt(0).toString(2).length);
-        output += "0".repeat(cc) + input[i].charCodeAt(0).toString(2) + "";
+    if(input.length > 0){
+      let test = 8 - (input[0].codePointAt(0).toString(2).length);
+      if(test < 0){
+        output = stupid(input);
+        return output
+      }
     }
+    for (let i = 0; i < input.length; i++){
+        
+        let cc = 8 - (input[i].codePointAt(0).toString(2).length);
+        output += "0".repeat(cc) + input[i].charCodeAt(0).toString(2) + "";
+
+    }
+
     return(output)
  }
 
@@ -321,7 +346,6 @@ function draw() {
 
 function generate(){
     messageinput = textbox.value();
-    console.log(messageinput)
     redraw()
 }
 /**************************/
