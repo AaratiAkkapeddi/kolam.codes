@@ -310,6 +310,7 @@ function makeGrid() {
   fw = width / dotCount;
   fy = height / dotCount;
   dotRadius = fw / 9;
+
   let count = 0;
   for (let y = 0; y < dotCount; y++) {
     for (let x = 0; x < dotCount; x++) {
@@ -344,6 +345,7 @@ function makeGrid() {
 /**************************/
 function setup() {
     textbox = createInput("kolam.codes");
+    textbox.changed(checkEnter)
     rectMode(CENTER);
     angleMode(DEGREES);
     frameRate(5);
@@ -352,8 +354,15 @@ function setup() {
     button.mousePressed(generate);
     textbox.parent("kolam")
     button.parent("kolam")
+    let c;
+   if(window.innerWidth > 768){
+    c = createCanvas(window.innerHeight/1.2, window.innerHeight/1.2);
 
-    let c = createCanvas(window.innerHeight/2, window.innerHeight/2);
+   }else{
+    c = createCanvas(window.innerHeight/2, window.innerHeight/2);
+
+   }
+
     c.parent("kolam")
     textAlign(CENTER);
     textSize(50);
@@ -407,6 +416,16 @@ function draw() {
 function generate(){
     messageinput = textbox.value();
     redraw()
+}
+function checkEnter(){
+  if (keyCode === ENTER) {
+    generate()
+  }
+}
+function keyPressed(){
+    if (keyCode === ENTER) {
+      generate()
+    }
 }
 /**************************/
 /**** Kolam Dot Class *****/

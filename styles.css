@@ -3,10 +3,17 @@ body{
     background-color: black;
     color: whitesmoke;
     font-size: 24px;
-    font-family: monospace;
+    font-family: sans-serif;
 }
 a, a:visited, a:link, a:focus{
     color:whitesmoke;
+}
+#about{
+    position:fixed;
+    top:0;
+    right:0;
+    background-color: black;
+    padding:10px 15px;
 }
 img{
     filter:invert(1);
@@ -30,6 +37,8 @@ input{
     text-transform: lowercase;
     background-color: black;
     border:1px solid whitesmoke;
+    position:relative;
+    z-index: 1;
 }
 button{
     background-color: black;
@@ -37,9 +46,22 @@ button{
     border:1px solid whitesmoke;
     padding: 3px 5px;
     font-size: 24px;
+    position:relative;
+    z-index: 1;
 
 }
 canvas{
     display: block;
-    margin-top:24px;
+    z-index: 0;
+    margin:0 auto;
+}
+
+main{
+    margin-top:45px;
+}
+
+@media(max-width: 768px){
+    canvas{
+        margin-top:24px;
+    }
 }
