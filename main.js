@@ -149,6 +149,66 @@ function insertSpaces(bincode){
             txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
 
 
+        }else if(isInt(Math.sqrt(diff - 4))){
+          let sq = Math.sqrt(diff - 4);
+          let startRow = (dotCount - sq) / 2
+          let start;
+          let startingCount = consecutive(startRow) + sq;
+          start = consecutive(startRow) - ((getRowDots(startRow - 1) - 1) /2 ) - 1;
+          txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+          for(i = 0; i < sq; i++){
+              // let d = Math.abs((sq + i) - (centerDot));
+              // d = d * 2;
+              // let rowDots = dotCount - d     
+              let rowDots = getRowDots(startRow+i)
+              if(i == Math.floor(sq/2)){
+                rowDots = rowDots + 2
+              }
+              let half = (rowDots - sq)/2  
+              start = consecutive(startRow+i) + half;
+              if(i == Math.floor(sq/2)){
+                start = consecutive(startRow+i) + half - 2;
+                txt2 = txt2.slice(0, start) + ".".repeat(sq + 2) + txt2.slice(start);
+
+              }else{
+                txt2 = txt2.slice(0, start) + ".".repeat(sq) + txt2.slice(start);
+
+              }
+          }
+          start = consecutive(startRow + (sq)) + ((getRowDots((startRow + (sq))) - 1 ) / 2);
+          txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+        }else if(isInt(Math.sqrt(diff - 8))){
+          let sq = Math.sqrt(diff - 8);
+          let startRow = (dotCount - sq) / 2
+          let start;
+          let startingCount = consecutive(startRow)
+          start = consecutive(startRow - 1) - ((getRowDots(startRow - 1) - 1) /2 );
+          txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+          start = startingCount - ((getRowDots(startRow) - 1) /2 );
+          txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+          for(i = 0; i < sq; i++){
+              // let d = Math.abs((sq + i) - (centerDot));
+              // d = d * 2;
+              // let rowDots = dotCount - d     
+              let rowDots = getRowDots(startRow+i)
+              if(i == Math.floor(sq/2)){
+                  rowDots = rowDots + 4
+              }
+              let half = (rowDots - sq)/2  
+              start = consecutive(startRow+i) + half;
+              if(i == Math.floor(sq/2)){
+                start = consecutive(startRow+i) + half - 4;
+                txt2 = txt2.slice(0, start) + ".".repeat(sq + 4) + txt2.slice(start);
+
+              }else{
+                txt2 = txt2.slice(0, start) + ".".repeat(sq) + txt2.slice(start);
+
+              }
+          }
+          start = consecutive(startRow + (sq)) + ((getRowDots((startRow + (sq))) - 1 ) / 2);
+          txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
+          start = consecutive(startRow + (sq) + 1) + ((getRowDots((startRow + (sq) + 1)) - 1 ) / 2);
+          txt2 = txt2.slice(0, start) + "." + txt2.slice(start);
         }else if(isCenteredSqrNum(diff - 8)){
             let nearest_sq = isCenteredSqrNum(diff - 8); //5
             let startingrow = (dotCount - nearest_sq)/2;
@@ -209,7 +269,7 @@ function insertSpaces(bincode){
             
 
 
-        }else{
+        } else{
            console.log(diff) 
         }
         
