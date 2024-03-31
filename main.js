@@ -331,7 +331,7 @@ function makeGrid() {
             
         count += 1;
       } else {
-        fill(0);
+        fill("#3d0202");
       }
 
       noStroke();
@@ -384,7 +384,7 @@ function draw() {
   totalDots = getDotCount(getBinary(messageinput))[1];
   message = insertSpaces(getBinary(messageinput))
   middle = floor(dotCount / 2);
-  background(0);
+  background("#3d0202");
   makeGrid();
   for (let i = 0; i < coords2.length; i++) {
     kolams.push(new KolamDot(i, false));
