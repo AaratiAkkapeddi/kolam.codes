@@ -1,5 +1,6 @@
 //BINARY CONVERTER
 function stupid(txt){
+  txt = txt.toLowerCase()
   let bin = ""
   let bytes = new TextEncoder("utf-8", { NONSTANDARD_allowLegacyEncoding: true }).encode(txt);
   //bytes = bytes.split(",");
@@ -15,7 +16,7 @@ function stupid(txt){
 
 
 function getBinary(message){
-    let input = message;
+    let input = message.toLowerCase();
     let output = "";
     if(input.length > 0){
       let test = 8 - (input[0].codePointAt(0).toString(2).length);
