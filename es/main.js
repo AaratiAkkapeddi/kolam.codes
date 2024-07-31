@@ -290,7 +290,7 @@ let dotRadius = 5;
 let totalDots;
 let fw; //width and height of entire kolam based on number of dots
 let fh;
-let messageinput = "kolam.codes"
+let messageinput = "escribe tu nombre aqui"
 let message;
 let blank=[];
 /**************************/
@@ -345,7 +345,7 @@ function makeGrid() {
 /******* p5 code **********/
 /**************************/
 function setup() {
-    textbox = createInput("kolam.codes");
+    textbox = createInput("escribe tu nombre aqui");
     textbox.changed(checkEnter)
     rectMode(CENTER);
     angleMode(DEGREES);

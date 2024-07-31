@@ -21,6 +21,14 @@ a:hover{
     background-color: #3d0202;
     padding:10px 15px;
 }
+#sonus{
+    position:fixed;
+    bottom:100px;
+    text-decoration: none;
+    right:0;
+    background-color: #3d0202;
+    padding:10px 15px;
+}
 img{
     filter:invert(1);
     max-height:60vh;
@@ -38,6 +46,7 @@ input{
     font-size: 24px;
     padding: 3px 5px;
     max-width: calc(100% - 50px);
+    width: 400px;
     margin-top:24px;
     color:white;
     text-transform: lowercase;
