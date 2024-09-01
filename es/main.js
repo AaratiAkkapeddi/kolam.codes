@@ -369,6 +369,8 @@ function setup() {
     textSize(50);
 
     noLoop();
+    describe('Curving lines loop around a perfect square or diamond shaped grid of dots. The lines are either yellow, pink, or white.');
+
  
  
 }
