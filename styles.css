@@ -12,7 +12,12 @@ a, a:visited, a:link, a:focus{
 a:hover{
     color:powderblue;
 }
+body > button{
+    position:fixed;
+    bottom:15px;
+    right:15px;
 
+}
 #about{
     position:fixed;
     top:0;

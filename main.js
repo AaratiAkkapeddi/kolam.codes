@@ -344,7 +344,13 @@ function makeGrid() {
 /**************************/
 /******* p5 code **********/
 /**************************/
+function saveIt(){
+  saveCanvas()
+}
 function setup() {
+    let btn = createButton('download kolam');
+    btn.mousePressed(saveIt)
+    
     textbox = createInput("kolam.codes");
     textbox.changed(checkEnter)
     rectMode(CENTER);
