@@ -7,7 +7,7 @@ body{
     background-color: var(--bg);
     color: white;
     font-size: 24px;
-    font-family: "Reddit Mono", monospace;
+    font-family: "Yatra One", serif;
     font-optical-sizing: auto;
 }
 a, a:visited, a:link, a:focus{
@@ -51,7 +51,7 @@ input{
     color:white;
     text-transform: lowercase;
     background-color: var(--bg);
-    border:1px solid white;
+    border:1px dotted white;
     position:relative;
     font-family: inherit;
     z-index: 1;
@@ -59,8 +59,8 @@ input{
 button{
     background-color: var(--bg);
     color:white;
-    border:1px solid white;
-    padding: 3px 5px;
+    border:1px dotted white;
+    padding: 3px 10px;
     font-size: 24px;
     font-family: inherit;
     position:relative;
