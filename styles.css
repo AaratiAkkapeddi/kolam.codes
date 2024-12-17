@@ -1,6 +1,10 @@
+:root{
+    --bg: #023d3a;
+}
+
 body{
     margin:0;
-    background-color: #3d0202;
+    background-color: var(--bg);
     color: white;
     font-size: 24px;
     font-family: "Reddit Mono", monospace;
@@ -23,7 +27,7 @@ body > button{
     top:0;
     text-decoration: none;
     right:0;
-    background-color: #3d0202;
+    background-color: var(--bg);
     padding:10px 15px;
 }
 img{
@@ -46,14 +50,14 @@ input{
     margin-top:24px;
     color:white;
     text-transform: lowercase;
-    background-color: #3d0202;
+    background-color: var(--bg);
     border:1px solid white;
     position:relative;
     font-family: inherit;
     z-index: 1;
 }
 button{
-    background-color: #3d0202;
+    background-color: var(--bg);
     color:white;
     border:1px solid white;
     padding: 3px 5px;
