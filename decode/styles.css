@@ -1,0 +1,128 @@
+:root{
+    --bg: #023d3a;
+    --space: 25px;
+    --font-size: 18px;
+    --color: white;
+}
+
+body{
+    margin:0;
+    background-color: var(--bg);
+    color: var(--color);
+    font-size: var(--font-size);
+    font-family: "Yatra One", serif;
+    font-optical-sizing: auto;
+}
+a, a:visited, a:link, a:focus{
+    color:var(--color);
+}
+
+a:hover{
+    color:powderblue;
+}
+body > button{
+    position:fixed;
+    bottom:15px;
+    right:15px;
+
+
+}
+#about{
+    position:fixed;
+    top:0;
+    text-decoration: none;
+    right:0;
+    background-color: var(--bg);
+    padding:10px 15px;
+}
+img{
+    filter:invert(1);
+    max-height:60vh;
+}
+img.chart{
+    max-height: 50vh;
+}
+main{
+    margin: 24px;
+}
+h2{
+    font-weight: normal;
+}
+input{
+    font-size: var(--font-size);
+    padding: 3px 5px;
+    max-width: calc(100% - 50px);
+    margin-top:24px;
+    color:white;
+    text-transform: lowercase;
+    background-color: var(--bg);
+    border:1px dotted white;
+    position:relative;
+    font-family: inherit;
+    z-index: 1;
+}
+button,select{
+    background-color: var(--bg);
+    color:white;
+    border:1px dotted white;
+    padding: 3px 10px;
+    font-size: var(--font-size);
+    font-family: inherit;
+    position:relative;
+    z-index: 1;
+    cursor: pointer;
+    margin: calc(var(--space)/2);
+}
+button:hover{
+    color:powderblue;
+}
+canvas{
+    display: block;
+    z-index: 0;
+    margin:0 auto;
+}
+
+#scene1, #scene2{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#scene2{
+    display: none;
+}
+main.on #scene2{
+    display:flex;
+}
+main.on #scene1{
+    display: none;
+}
+#scene1 svg{
+    padding: var(--space);
+    width: 50vh;
+}
+#scene1 button{
+    display: none;
+}
+#scene1.on button{
+    display: inline-block;
+}
+/* select{
+    background-color: transparent;
+    border:1px solid white;
+    padding: 
+} */
+
+@media(max-width: 768px){
+    canvas{
+        margin-top:24px;
+    }
+    main{
+        margin-top:45px;
+    }
+    
+}
