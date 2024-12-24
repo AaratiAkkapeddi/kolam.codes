@@ -15,6 +15,12 @@ document.querySelector("#go-scene2").addEventListener("click", function(){
    document.querySelector('main').classList.add('on')
    sceneNum = 2;
 })
+document.querySelector("#ok").addEventListener("click", function(){
+  document.querySelector('.instruction-modal').classList.add('close')
+});
+document.querySelector("#info").addEventListener("click", function(){
+  document.querySelector('.instruction-modal').classList.remove('close')
+});
 document.querySelector("#go-scene1").addEventListener("click", function(){
   document.querySelector('main').classList.remove('on')
   sceneNum = 0;
@@ -104,18 +110,18 @@ function setup() {
   textAlign(CENTER);
   rectMode(CENTER);
   if (windowWidth < 800) {
-    capture = createCapture(VIDEO, {
-      video: {
-        aspectRatio: 1,
-        facingMode: {
-          exact: "environment",
-        },
-      },
-    });
-      capture.hide();
+    // capture = createCapture(VIDEO, {
+    //   video: {
+    //     aspectRatio: 1,
+    //     facingMode: {
+    //       exact: "environment",
+    //     },
+    //   },
+    // });
+    //   capture.hide();
   } else {
-    capture = createCapture(VIDEO)
-    capture.hide();
+    // capture = createCapture(VIDEO)
+    // capture.hide();
   }
 
 

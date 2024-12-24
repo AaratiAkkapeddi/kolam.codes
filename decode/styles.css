@@ -95,11 +95,74 @@ canvas{
 #scene2{
     display: none;
 }
+.instruction-modal{
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: #023d3adf;
+    padding: var(--space);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    height: calc(100vh - (var(--space)*2));
+    width: calc(100vw - (var(--space)*2));
+}
+.instruction-modal p{
+    max-width: 900px;
+}
+#info{
+    padding:0;
+    position:fixed;
+    top:0;
+    right:0;
+    border:none;
+    border-bottom: 1px dotted;
+}
+main.on .instruction-modal{
+    display: flex;
+}
+main.on .instruction-modal.close{
+    display: none;
+}
 main.on #scene2{
     display:flex;
+
 }
 main.on #scene1{
     display: none;
+}
+
+#go-scene1{
+   position:fixed;
+   top:0;
+   border:none;
+   left:0;
+   border-bottom:1px dotted;
+   padding:0;
+}
+#message{
+    margin-top: var(--space);
+    display: none;
+}
+main.on #message{
+  display: block;
+}
+.settings{
+    display: flex;
+    width: 100%;
+    margin-top: var(--space);    
+    justify-content: space-between;
+}
+#intro{
+    position: fixed;
+    top:0;
+    width: 100%;
+    text-align: center;
+}
+#scene1{
+    margin-top: calc(var(--space) * 5);
 }
 #scene1 svg{
     padding: var(--space);

@@ -13,7 +13,7 @@
 <body>
     <main>
         <div id="scene1">
-            <p>Use this website to decode a kolam.</p>
+            <p id="intro">Use this website to decode a kolam. <a href="../about.html">More about kolam encryption</a></p>
             <label for="dotNum">First, choose the number of dots in the longest row of the grid </label>
             <select id="dotNum" name="dotNum" >
                 <option>3</option>
@@ -34,19 +34,25 @@
                 <option>33</option>
                 <option>35</option>
               </select>
-              <button id="go-scene2">go to next step</button>
+              <button id="go-scene2">go to next step →</button>
             </div>
             <div id="scene2">
-                <p >Select each box in the grid to mark it as a 1, 0, or blank. Continue clicking the box to cycle through the choices. As you fill the grid, the translated message will update at the bottom of this page. </p>
-                <button id="flip">click to flip the 0's and 1's</button>
-                <button id="capture">click to take a reference photo</button>
-                <button id="go-scene1">go back to step 1</button>
+                <button id="go-scene1">← go back to step 1</button>
+                <button id="info">info</button>
+                <div class="settings">
+                <button id="flip">0 ↔ 1</button>
+                <button id="capture">take reference photo</button>
+                </div>
             </div>
             
             <div id="grid"></div>
+            <div id="message">
+                Translation:<br>
             <p id="num">
-                binary translation
+                
             </p>
+            </div>
+          
 
   
         
@@ -61,6 +67,7 @@
 
 
 
+            <div class="instruction-modal" ><p>Select each box in the grid to mark it as a 1, 0, or blank. Continue clicking the box to cycle through the choices. As you fill the grid, the translated message will update at the bottom of this page.</p><button id="ok">ok</button> </div>
 
 
     </main>
