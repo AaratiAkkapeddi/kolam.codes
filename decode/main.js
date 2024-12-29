@@ -25,6 +25,19 @@ document.querySelector("#go-scene1").addEventListener("click", function(){
   document.querySelector('main').classList.remove('on')
   sceneNum = 0;
 })
+document.querySelector("#copy-text").addEventListener("click", function(){
+
+    // Get the text field
+    var copyText = document.getElementById("num").innerHTML;
+
+  
+     // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText);
+  
+    // Alert the copied text
+
+
+})
 
 function updateDotCount(event) {
   document.querySelector('#scene1').classList.add('on');

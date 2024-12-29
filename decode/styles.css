@@ -149,6 +149,41 @@ main.on #scene1{
 main.on #message{
   display: block;
 }
+#num{
+    background-color: whitesmoke;
+    color: var(--bg);
+    padding: 5px;
+    min-height: 1em;
+}
+#copy-text{
+    border:none;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+}
+#copy-text:hover{
+    opacity: 0.8;
+}
+#copy-text svg{
+    width: 25px;
+}
+canvas{
+    opacity: 0.5;
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+main.on canvas{
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+    left:auto;
+    top:auto;
+    transform: none;
+}
 .settings{
     display: flex;
     width: 100%;
@@ -162,7 +197,12 @@ main.on #message{
     text-align: center;
 }
 #scene1{
+    background-color: #023d3ad2;
     margin-top: calc(var(--space) * 5);
+    height: calc(100vh - (var(--space)* 6));
+}
+#scene1 p:last-child{
+    text-align: center;
 }
 #scene1 svg{
     padding: var(--space);
