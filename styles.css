@@ -75,7 +75,12 @@ canvas{
     z-index: 0;
     margin:0 auto;
 }
-
+#nav-about{
+    display: flex;
+    width: 100%;
+    margin-bottom: 50px;
+    justify-content: space-between;
+}
 
 @media(max-width: 768px){
     canvas{
@@ -83,6 +88,10 @@ canvas{
     }
     main{
         margin-top:45px;
+    }
+    
+    #nav-about{
+        flex-direction: column;
     }
     
 }

@@ -1,8 +1,9 @@
 :root{
     --bg: #023d3a;
     --space: 25px;
-    --font-size: 18px;
+    --font-size: 24px;
     --color: white;
+    --color-highlight: rgb(243, 247, 225);
 }
 
 body{
@@ -43,7 +44,7 @@ img.chart{
     max-height: 50vh;
 }
 main{
-    margin: 24px;
+    margin: var(--space);
 }
 h2{
     font-weight: normal;
@@ -110,7 +111,7 @@ canvas{
     width: calc(100vw - (var(--space)*2));
 }
 .instruction-modal p{
-    max-width: 900px;
+    max-width: 800px;
 }
 #info{
     padding:0;
@@ -145,6 +146,14 @@ main.on #scene1{
 #message{
     margin-top: var(--space);
     display: none;
+    max-width: 900px;
+    margin:0 auto;
+}
+#capture-remove{
+    display: none;
+}
+#capture-remove.on{
+    display: inline-block;
 }
 main.on #message{
   display: block;
@@ -195,11 +204,14 @@ main.on canvas{
     top:0;
     width: 100%;
     text-align: center;
+    
 }
 #scene1{
     background-color: #023d3ad2;
     margin-top: calc(var(--space) * 5);
     height: calc(100vh - (var(--space)* 6));
+    align-items: center;
+    justify-content: center;
 }
 #scene1 p:last-child{
     text-align: center;
@@ -219,13 +231,46 @@ main.on canvas{
     border:1px solid white;
     padding: 
 } */
-
+#copy-success{
+    pointer-events: none;
+    position: fixed;
+    opacity: 0;
+    z-index: 2;
+    transition:0.2s;
+    color: var(--color-highlight);
+}
+#copy-success.on{
+    opacity: 1;
+}
 @media(max-width: 768px){
+    :root{
+        --space: 15px;
+        --font-size: 18px;
+    }
     canvas{
         margin-top:24px;
     }
     main{
-        margin-top:45px;
+        margin-top:var(--space);
+        
+    }
+    #scene1{
+        margin: calc(var(--space) * 5) var(--space);
+    }
+    #scene2{
+        margin-top: calc(var(--space) * 3);
+    }
+    .settings{
+        font-size: 16px;
+    }
+    .instruction-modal{
+        max-width: none;
+        padding: calc(var(--space)* 2);
+        height: calc(100vh - (var(--space)*4));
+        width: calc(100vw - (var(--space)*4));
+    }
+    #message{
+        padding: var(--space);
     }
     
 }

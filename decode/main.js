@@ -5,11 +5,12 @@ let coords = []; //all dots
 let uncoords = [];
 let nums = [];
 let fs = 12;
-let captureMode = true;
+let captureMode = false;
 let photo;
 let middle = 0;
 document.querySelector("#dotNum").addEventListener("change", updateDotCount);
 document.querySelector("#capture").addEventListener("click", takePhoto);
+document.querySelector("#capture-remove").addEventListener("click", removePhoto);
 document.querySelector("#flip").addEventListener("click", flipNumbers);
 document.querySelector("#go-scene2").addEventListener("click", function(){
    document.querySelector('main').classList.add('on')
@@ -33,10 +34,13 @@ document.querySelector("#copy-text").addEventListener("click", function(){
   
      // Copy the text inside the text field
     navigator.clipboard.writeText(copyText);
-  
+
     // Alert the copied text
 
-
+    document.querySelector("#copy-success").classList.add('on');
+    setTimeout(function(){
+      document.querySelector("#copy-success").classList.remove('on');
+    }, 1000)
 })
 
 function updateDotCount(event) {
@@ -60,15 +64,47 @@ function flipNumbers(){
   });
   processNums(coords);
 }
+function removePhoto(){
+  photo = null;
+  capture.remove();
+  captureMode = false;
+  document.querySelector("#capture-remove").classList.remove('on');
+}
 
 function takePhoto(){
+
+
+
+
+
   if(captureMode){
-    photo = capture.get(0, 0, width, height);
-    document.querySelector("#capture").innerHTML = "retake reference photo";
+    photo = capture;
+    document.querySelector("#capture").innerHTML = "retake photo";
     captureMode = false;
+    capture.remove();
+    document.querySelector("#capture-remove").innerHTML = "clear photo"
+    document.querySelector("#capture-remove").classList.add('on');
   }else{
+    document.querySelector("#capture-remove").innerHTML = "stop cam"
+    document.querySelector("#capture-remove").classList.add('on');
     captureMode = true;
+    if (windowWidth < 800) {
+      capture = createCapture(VIDEO, {
+        video: {
+          aspectRatio: 1,
+          facingMode: {
+            exact: "environment",
+          },
+        },
+      });
+        capture.hide();
+    } else {
+      capture = createCapture(VIDEO,{video: {
+        aspectRatio: 1}})
+      capture.hide();
+    }
     document.querySelector("#capture").innerHTML = "take reference photo";
+    
   }
 }
 
@@ -122,20 +158,7 @@ function processNums(arr) {
 function setup() {
   textAlign(CENTER);
   rectMode(CENTER);
-  if (windowWidth < 800) {
-    // capture = createCapture(VIDEO, {
-    //   video: {
-    //     aspectRatio: 1,
-    //     facingMode: {
-    //       exact: "environment",
-    //     },
-    //   },
-    // });
-    //   capture.hide();
-  } else {
-    // capture = createCapture(VIDEO)
-    // capture.hide();
-  }
+ 
 
 
 
@@ -151,8 +174,8 @@ function setup() {
 function draw() {
   clear();
   // background(0);
-  if(windowWidth < 800 && coords.length > 0){
-    if(!captureMode){
+  if(capture && coords.length > 0){
+    if(!captureMode && photo){
       image(photo,0,0,width,height)
     }else if(capture && captureMode){
         image(capture, 0, 0, width, height);

@@ -13,7 +13,7 @@
 <body>
     <main>
         <div id="scene1">
-            <p id="intro">Use this website to decode a kolam. <a href="../about.html">More about kolam encryption</a></p>
+            <p id="intro">Use this website to decode a kolam.<br> <a href="../about.html">More about kolam encryption</a></p>
             <p><label for="dotNum">First, choose the number of dots in the longest row of the grid </label>
             <select id="dotNum" name="dotNum" >
                 <option></option>
@@ -44,6 +44,7 @@
                 <div class="settings">
                 <button id="flip">0 ↔ 1</button>
                 <button id="capture">take reference photo</button>
+                <button id="capture-remove">clear photo</button>
                 </div>
             </div>
             
@@ -58,6 +59,7 @@
                 <rect x="13" y="13" width="37" height="34" rx="3" stroke="white" stroke-width="2"/>
                 </svg>
                 </button>
+                <div id="copy-success">copied text</div>
             </div>
           
 
@@ -74,7 +76,7 @@
 
 
 
-            <div class="instruction-modal" ><p>Select each box in the grid to mark it as a 1, 0, or blank. Continue clicking the box to cycle through the choices. As you fill the grid, the translated message will update at the bottom of this page.</p><button id="ok">ok</button> </div>
+            <div class="instruction-modal" ><p>Select each box in the grid to mark it as a 1, 0, or blank. Continue clicking the box to cycle through the choices. As you fill the grid, the translated message will update at the bottom of this page.</p><button id="ok">ok</button><p><br><br><br><a href='../about'>More about kolam encryption</a></p> </div>
 
 
     </main>
