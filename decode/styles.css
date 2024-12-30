@@ -131,10 +131,14 @@ main.on #scene2{
     display:flex;
 
 }
+
 main.on #scene1{
     display: none;
 }
 
+#scene1.on svg{
+    display: none;
+}
 #go-scene1{
    position:fixed;
    top:0;
@@ -218,7 +222,7 @@ main.on canvas{
 }
 #scene1 svg{
     padding: var(--space);
-    width: 50vh;
+    width: 40vh;
 }
 #scene1 button{
     display: none;
