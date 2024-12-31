@@ -28,19 +28,52 @@ document.querySelector("#go-scene1").addEventListener("click", function(){
 })
 document.querySelector("#copy-text").addEventListener("click", function(){
 
-    // Get the text field
-    var copyText = document.getElementById("num").innerHTML;
+    // // Get the text field
+    // var copyText = document.getElementById("num").innerHTML;
 
   
-     // Copy the text inside the text field
-    navigator.clipboard.writeText(copyText);
+    //  // Copy the text inside the text field
+    // navigator.clipboard.writeText(copyText);
 
-    // Alert the copied text
+    // // Alert the copied text
 
-    document.querySelector("#copy-success").classList.add('on');
-    setTimeout(function(){
-      document.querySelector("#copy-success").classList.remove('on');
-    }, 1000)
+    
+
+
+
+
+
+      const textField = document.getElementById('num');
+  
+      // Create a temporary textarea element
+      const tempTextArea = document.createElement('textarea');
+      tempTextArea.value = textField.innerHTML;
+      document.body.appendChild(tempTextArea);
+  
+      // Select the text
+      tempTextArea.select();
+      tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+  
+      // Copy the text
+      try {
+          document.execCommand('copy');
+      } catch (err) {
+          console.error('Failed to copy text: ', err);
+      }
+  
+      // Remove the temporary textarea element
+      document.body.removeChild(tempTextArea);
+  
+  
+      document.querySelector("#copy-success").classList.add('on');
+      setTimeout(function(){
+        document.querySelector("#copy-success").classList.remove('on');
+      }, 1000)
+
+
+
+
+
 })
 
 function updateDotCount(event) {
