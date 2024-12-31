@@ -215,12 +215,9 @@ function draw() {
     let h = (width * 9) / 16;
     let ratio = h / capture.height;
     var video_w = capture.width * ratio;
-    let cw = video_w * 2;
-    let ch = h * 2;
-    if(windowWidth < 768){
-      cw = h * 2;
-      ch = video_w * 2;
-    }
+    let cw = video_w * 2.2;
+    let ch = h * 2.2;
+   
     if(!captureMode && photo){
       imageMode(CENTER)
       image(photo,width/2, height/2, cw, ch)
