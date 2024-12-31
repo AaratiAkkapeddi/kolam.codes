@@ -122,14 +122,18 @@ function takePhoto(){
     document.querySelector("#capture-remove").classList.add('on');
     captureMode = true;
     if (windowWidth < 768) {
-      capture = createCapture({
+      var constraints = {
         audio: false,
         video: {
           facingMode: {
-            exact: "environment",
-          },
-        },
-      });
+            exact: "environment"
+          }
+        }    
+        //video: {
+          //facingMode: "user"
+        //} 
+      };
+      capture = createCapture(constraints);
         capture.hide();
     } else {
       capture = createCapture(VIDEO)
