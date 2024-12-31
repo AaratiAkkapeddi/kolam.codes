@@ -121,8 +121,9 @@ function takePhoto(){
     document.querySelector("#capture-remove").innerHTML = "stop cam"
     document.querySelector("#capture-remove").classList.add('on');
     captureMode = true;
-    if (windowWidth < 800) {
-      capture = createCapture(VIDEO, {
+    if (windowWidth < 768) {
+      capture = createCapture({
+        audio: false,
         video: {
           facingMode: {
             exact: "environment",
