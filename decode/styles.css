@@ -201,11 +201,12 @@ main.on canvas{
     display: flex;
     width: 100%;
     margin-top: var(--space);    
+    font-style: italic;
     justify-content: space-between;
 }
 #intro{
     position: fixed;
-    top:0;
+    top:var(--space);
     width: 100%;
     text-align: center;
     
@@ -222,7 +223,7 @@ main.on canvas{
 }
 #scene1 svg{
     padding: var(--space);
-    width: 40vh;
+    width: 35vh;
 }
 #scene1 button{
     display: none;
@@ -259,7 +260,7 @@ main.on canvas{
         
     }
     #scene1{
-        margin: calc(var(--space) * 5) var(--space);
+        margin: calc(var(--space) * 4) var(--space);
     }
     #scene2{
         margin-top: calc(var(--space) * 3);
