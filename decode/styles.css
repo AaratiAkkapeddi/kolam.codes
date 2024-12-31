@@ -267,6 +267,10 @@ main.on canvas{
     .settings{
         font-size: 16px;
     }
+    .settings button{
+        padding: 3px 8px;
+        font-size: 16px;
+    }
     .instruction-modal{
         max-width: none;
         padding: calc(var(--space)* 2);
