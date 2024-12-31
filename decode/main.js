@@ -8,6 +8,19 @@ let fs = 12;
 let captureMode = false;
 let photo;
 let middle = 0;
+let zoom = 1;
+let tx = 0;
+let ty = 0;
+document.querySelector("#x").addEventListener("input", (event) => {
+  tx = eval(event.target.value);
+});
+document.querySelector("#y").addEventListener("input", (event) => {
+  ty = eval(event.target.value);
+});
+
+document.querySelector("#scale").addEventListener("input", (event) => {
+  zoom = eval(event.target.value);
+});
 document.querySelector("#dotNum").addEventListener("change", updateDotCount);
 document.querySelector("#capture").addEventListener("click", takePhoto);
 document.querySelector("#capture-remove").addEventListener("click", removePhoto);
@@ -99,6 +112,7 @@ function flipNumbers(){
 }
 function removePhoto(){
   photo = null;
+  document.querySelector("#adjust-image").classList.remove('on');
   capture.remove();
   captureMode = false;
   document.querySelector("#capture-remove").classList.remove('on');
@@ -117,7 +131,9 @@ function takePhoto(){
     capture.remove();
     document.querySelector("#capture-remove").innerHTML = "clear photo"
     document.querySelector("#capture-remove").classList.add('on');
+    document.querySelector("#adjust-image").classList.add('on');
   }else{
+    document.querySelector("#adjust-image").classList.remove('on');
     document.querySelector("#capture-remove").innerHTML = "stop cam"
     document.querySelector("#capture-remove").classList.add('on');
     captureMode = true;
@@ -219,11 +235,21 @@ function draw() {
     let ch = h * 2.2;
    
     if(!captureMode && photo){
+      push()
+      imageMode(CENTER);
+      translate(width / 2, height / 2);
+      scale(zoom);
       imageMode(CENTER)
-      image(photo,width/2, height/2, cw, ch)
+      image(photo,tx, ty, cw, ch)
+      pop()
     }else if(capture && captureMode){
-        imageMode(CENTER)
-        image(capture, width/2, height/2, cw, ch);
+      push()
+      imageMode(CENTER);
+      translate(width / 2, height / 2);
+      scale(zoom);
+      imageMode(CENTER)
+      image(capture, tx,ty, cw, ch);
+      pop()
     }
   }
   

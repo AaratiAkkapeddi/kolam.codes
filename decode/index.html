@@ -65,11 +65,26 @@
             <div id="scene2">
                 <button id="go-scene1">← go back to step 1</button>
                 <button id="info">info</button>
+                <details id="adjust-image">
+                    <summary>adjust Image</summary>
+                    <div>
+                       <label for="x">move left/right:</label>
+                        <input type="range" id="x" step="1" name="scale" min="-200" max="200"> <br>
+                      <label for="y">move top/bottom:</label>
+                        <input type="range" id="y" step="1" name="scale" min="-200" max="200"> <br>
+                       <label for="scale">scale:</label>
+                        <input type="range" id="scale" step="0.01" default="1" name="scale" min="0.2" max="2"> <br>
+                    </div>
+                    
+                  </details>
                 <div class="settings">
                 <button id="flip">0 ↔ 1</button>
                 <button id="capture">take reference photo</button>
-                <button id="capture-remove">clear photo</button>
+                <button id="capture-remove">clear photo</button><br></b>
+                
+                  
                 </div>
+                
             </div>
             
             <div id="grid"></div>

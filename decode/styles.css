@@ -189,6 +189,14 @@ canvas{
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
+#adjust-image{
+    width: 100%;
+    padding: var(--space) 0;
+    display: none;
+}
+#adjust-image.on{
+    display: block;
+}
 main.on canvas{
     opacity: 1;
     z-index: 1;
