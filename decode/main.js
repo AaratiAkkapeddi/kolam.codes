@@ -210,11 +210,18 @@ function setup() {
 function draw() {
   clear();
   // background(0);
+
   if(capture && coords.length > 0){
+    let h = (width * 9) / 16;
+    let ratio = h / capture.height;
+    var video_w = capture.width * ratio;
+
     if(!captureMode && photo){
-      image(photo,0,0,width,height)
+      imageMode(CENTER)
+      image(photo,width/2, height/2, video_w*2, h*2)
     }else if(capture && captureMode){
-        image(capture, 0, 0, width, height);
+        imageMode(CENTER)
+        image(capture, width/2, height/2, video_w*2, h*2);
     }
   }
   
@@ -252,7 +259,8 @@ function makeGrid(dotCount) {
       let r = range(abs(middle - y), dotCount - abs(middle - y) - 1);
 
       if (r.includes(x)) {
-        stroke(255);
+        stroke(255, 255,255 ,100);
+        strokeWeight(0.5)
         coords.push(
           new Digit(x * fw + fw / 2, y * fy + fy / 2, dotRadius * 9, "")
         );
@@ -318,7 +326,8 @@ class Digit {
     // This code runs once when myFrog.show() is called.
 
     fill(0, 0, 0, 100);
-    stroke(255);
+    stroke(255, 255,255 ,100);
+    strokeWeight(0.5)
     rect(this.x, this.y, this.size, this.size);
     fill(255);
     noStroke();
