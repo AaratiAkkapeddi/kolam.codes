@@ -88,10 +88,9 @@ function takePhoto(){
     document.querySelector("#capture-remove").innerHTML = "stop cam"
     document.querySelector("#capture-remove").classList.add('on');
     captureMode = true;
-    if (windowWidth < 800) {
+    if (windowWidth < 768) {
       capture = createCapture(VIDEO, {
         video: {
-          aspectRatio: 1,
           facingMode: {
             exact: "environment",
           },
@@ -99,8 +98,7 @@ function takePhoto(){
       });
         capture.hide();
     } else {
-      capture = createCapture(VIDEO,{video: {
-        aspectRatio: 1}})
+      capture = createCapture(VIDEO)
       capture.hide();
     }
     document.querySelector("#capture").innerHTML = "take reference photo";
@@ -165,7 +163,7 @@ function setup() {
   if (window.innerWidth > 768) {
     c = createCanvas(window.innerHeight / 1.8, window.innerHeight / 1.8);
   } else {
-    c = createCanvas(window.innerHeight / 2, window.innerHeight / 2);
+    c = createCanvas(window.innerHeight / 2.1, window.innerHeight / 2.1);
   }
   c.parent("#grid")
   background(0);
