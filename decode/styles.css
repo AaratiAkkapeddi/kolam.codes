@@ -190,9 +190,15 @@ canvas{
     transform: translateX(-50%) translateY(-50%);
 }
 #adjust-image{
+    position: relative;
+    z-index: 2;
     width: 100%;
     padding: var(--space) 0;
     display: none;
+}
+#adjust-image div{
+    position: absolute;
+    background-color: #023d3ad5;
 }
 #adjust-image.on{
     display: block;
