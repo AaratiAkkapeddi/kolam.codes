@@ -197,8 +197,7 @@ canvas{
     display: none;
 }
 #adjust-image div{
-    position: absolute;
-    background-color: #023d3ad5;
+
 }
 #adjust-image.on{
     display: block;
