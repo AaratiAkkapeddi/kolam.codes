@@ -208,7 +208,7 @@ function mousePressed() {
   processNums(coords);
   }
 }
-function touchStart(){
+function touchStarted(){
    drag = [mouseX, mouseY]
 }
 function touchEnded() {
