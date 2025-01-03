@@ -198,9 +198,9 @@ main{
     touch-action: none;
 }
 html, body {touch-action: none;}
-canvas{
+/* canvas{
     touch-action: pan-x pan-y pinch-zoom;
-}
+} */
 .settings{
     display: flex;
     width: calc(100% - (var(--space)*2));
