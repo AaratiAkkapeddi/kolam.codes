@@ -187,9 +187,13 @@ function makeGrid(dotCount) {
 
       noStroke();
       fs = dotRadius * 4;
+
       // rect(x * fw , y * fy, dotRadius*9, dotRadius*9);
     }
   }
+
+  coords[0].num = "0"
+  coords[1].num = "1"
 }
 
 function mousePressed() {
