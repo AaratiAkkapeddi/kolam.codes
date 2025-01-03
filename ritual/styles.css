@@ -190,6 +190,10 @@ main.on canvas{
     top:auto;
     transform: none;
 }
+*{
+    touch-action: manipulation;
+
+}
 .settings{
     display: flex;
     width: calc(100% - (var(--space)*2));
