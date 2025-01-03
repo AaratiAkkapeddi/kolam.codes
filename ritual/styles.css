@@ -85,6 +85,9 @@ canvas{
 }
 #grid{
     left:0;
+    width: calc(100vw - 100px);
+    height: calc(100vh - 450px);
+    overflow: scroll;
     top:0;
     position: absolute;
     padding: 50px;
