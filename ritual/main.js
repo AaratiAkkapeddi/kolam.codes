@@ -6,6 +6,7 @@ let nums = [];
 let fs = 12;
 let middle = 0;
 let photo;
+let drag = false;
 
 
 
@@ -124,7 +125,7 @@ function setup() {
   if (window.innerWidth > 768) {
     c = createCanvas(window.innerWidth, window.innerWidth);
   } else {
-    c = createCanvas(window.innerHeight*2 , window.innerHeight*2 );
+    c = createCanvas(window.innerHeight * 2 , window.innerHeight * 2 );
   }
   c.parent("#grid")
   background(0);
@@ -207,9 +208,12 @@ function mousePressed() {
   processNums(coords);
   }
 }
-
+function touchStart(){
+  let drag = [mouseX, mouseY]
+}
 function touchEnded() {
-  if(window.innerWidth <= 768 ){
+  if(window.innerWidth <= 768){
+    if((dist(mouseX,mouseY,drag[0],drag[1]) < 10)){
   coords.forEach((coord, index) => {
     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
       if (coord.num == "1") {
@@ -222,6 +226,7 @@ function touchEnded() {
     }
   });
   processNums(coords);
+}
 }
 }
 
