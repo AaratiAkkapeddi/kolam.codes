@@ -125,7 +125,7 @@ function setup() {
   if (window.innerWidth > 768) {
     c = createCanvas(window.innerWidth, window.innerWidth);
   } else {
-    c = createCanvas(window.innerHeight * 2 , window.innerHeight * 2 );
+    c = createCanvas(window.innerHeight  , window.innerHeight  );
   }
   c.parent("#grid")
   background(0);
