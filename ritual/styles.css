@@ -1,0 +1,250 @@
+:root{
+    --bg: #023d3a;
+    --space: 25px;
+    --font-size: 24px;
+    --color: white;
+    --color-highlight: rgb(243, 247, 225);
+}
+
+body{
+    margin:0;
+    background-color: var(--bg);
+    color: var(--color);
+    font-size: var(--font-size);
+    font-family: "Yatra One", serif;
+    font-optical-sizing: auto;
+}
+a, a:visited, a:link, a:focus{
+    color:var(--color);
+}
+
+a:hover{
+    color:powderblue;
+}
+body > button{
+    position:fixed;
+    bottom:15px;
+    right:15px;
+
+
+}
+#about{
+    position:fixed;
+    top:0;
+    text-decoration: none;
+    right:0;
+    background-color: var(--bg);
+    padding:10px 15px;
+}
+img{
+    filter:invert(1);
+    max-height:60vh;
+}
+img.chart{
+    max-height: 50vh;
+}
+main{
+    margin: var(--space);
+}
+h2{
+    font-weight: normal;
+}
+input{
+    font-size: var(--font-size);
+    padding: 3px 5px;
+    max-width: calc(100% - 50px);
+    margin-top:24px;
+    color:white;
+    text-transform: lowercase;
+    background-color: var(--bg);
+    border:1px dotted white;
+    position:relative;
+    font-family: inherit;
+    z-index: 1;
+}
+button,select{
+    background-color: var(--bg);
+    color:white;
+    border:1px dotted white;
+    padding: 3px 10px;
+    font-size: var(--font-size);
+    font-family: inherit;
+    position:relative;
+    z-index: 1;
+    cursor: pointer;
+    margin: calc(var(--space)/2);
+}
+button:hover{
+    color:powderblue;
+}
+canvas{
+    display: block;
+    z-index: 0;
+    margin:0 auto;
+}
+
+#scene1, #scene2{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+.instruction-modal{
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: #023d3adf;
+    padding: var(--space);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    height: calc(100vh - (var(--space)*2));
+    width: calc(100vw - (var(--space)*2));
+}
+.instruction-modal p{
+    max-width: 800px;
+}
+#info{
+    padding:0;
+    position:fixed;
+    top:0;
+    right:0;
+    border:none;
+    border-bottom: 1px dotted;
+}
+main .instruction-modal{
+    display: flex;
+}
+main .instruction-modal.close{
+    display: none;
+}
+
+
+
+
+
+#go-scene1{
+   position:fixed;
+   top:0;
+   border:none;
+   left:0;
+   border-bottom:1px dotted;
+   padding:0;
+}
+#message{
+    margin-top: var(--space);
+    max-width: 900px;
+    margin:0 auto;
+}
+
+main #message{
+  display: block;
+}
+#num{
+    background-color: whitesmoke;
+    color: var(--bg);
+    padding: 5px;
+    min-height: 1em;
+}
+#copy-text{
+    border:none;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+}
+#copy-text:hover{
+    opacity: 0.8;
+}
+#copy-text svg{
+    width: 25px;
+}
+canvas{
+    opacity: 1;
+}
+
+
+main.on canvas{
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+    left:auto;
+    top:auto;
+    transform: none;
+}
+.settings{
+    display: flex;
+    width: 100%;
+    margin-top: var(--space);    
+    font-style: italic;
+    justify-content: space-between;
+}
+#intro{
+    position: fixed;
+    top:var(--space);
+    width: 100%;
+    text-align: center;
+    
+}
+
+/* select{
+    background-color: transparent;
+    border:1px solid white;
+    padding: 
+} */
+#copy-success{
+    pointer-events: none;
+    position: fixed;
+    opacity: 0;
+    z-index: 2;
+    transition:0.2s;
+    color: var(--color-highlight);
+}
+#copy-success.on{
+    opacity: 1;
+}
+@media(max-width: 768px){
+    :root{
+        --space: 15px;
+        --font-size: 18px;
+    }
+    canvas{
+        margin-top:24px;
+    }
+    main{
+        margin-top:var(--space);
+        
+    }
+    #scene1{
+        margin: calc(var(--space) * 4) var(--space);
+    }
+    #scene2{
+        margin-top: calc(var(--space) * 3);
+    }
+    #adjust-image{
+        margin-top:var(--space);
+    }
+    .settings{
+        font-size: 16px;
+    }
+    .settings button{
+        padding: 3px 8px;
+        font-size: 16px;
+    }
+    .instruction-modal{
+        max-width: none;
+        padding: calc(var(--space)* 2);
+        height: calc(100vh - (var(--space)*4));
+        width: calc(100vw - (var(--space)*4));
+    }
+    #message{
+        padding: var(--space);
+    }
+    
+}

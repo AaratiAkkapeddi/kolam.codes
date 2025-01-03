@@ -11,6 +11,7 @@ let middle = 0;
 let zoom = 1;
 let tx = 0;
 let ty = 0;
+let r = 0;
 document.querySelector("#x").addEventListener("input", (event) => {
   tx = eval(event.target.value);
 });
@@ -20,6 +21,9 @@ document.querySelector("#y").addEventListener("input", (event) => {
 
 document.querySelector("#scale").addEventListener("input", (event) => {
   zoom = eval(event.target.value);
+});
+document.querySelector("#rotate").addEventListener("input", (event) => {
+  r = eval(event.target.value);
 });
 document.querySelector("#dotNum").addEventListener("change", updateDotCount);
 document.querySelector("#capture").addEventListener("click", takePhoto);
@@ -210,6 +214,7 @@ function processNums(arr) {
 function setup() {
   textAlign(CENTER);
   rectMode(CENTER);
+  angleMode(DEGREES);
  
 
 
@@ -239,6 +244,7 @@ function draw() {
       imageMode(CENTER);
       translate(width / 2, height / 2);
       scale(zoom);
+      rotate(r);
       imageMode(CENTER)
       image(photo,tx, ty, cw, ch)
       pop()
@@ -247,6 +253,7 @@ function draw() {
       imageMode(CENTER);
       translate(width / 2, height / 2);
       scale(zoom);
+      rotate(r);
       imageMode(CENTER)
       image(capture, tx,ty, cw, ch);
       pop()

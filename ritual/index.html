@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Rituals of Recursion << Decoder >></title>
+</head>
+<body>
+<main>
+    <button id="info">info</button>
+        <button id="flip">0 ↔ 1</button>
+
+        <div id="grid"></div>
+
+        <div id="message">
+            Translation:<br>
+        <p id="num">
+            
+        </p>
+        <button id="copy-text"><svg width="51" height="48" viewBox="0 0 51 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="37" height="34" rx="3" stroke="white" stroke-width="2"/>
+            <rect x="13" y="13" width="37" height="34" rx="3" stroke="white" stroke-width="2"/>
+            </svg>
+            </button>
+            <div id="copy-success">copied text</div>
+        </div>
+
+
+        <div class="instruction-modal" >
+
+            <p>Select each box in the matrix to mark it as a 1, 0, or blank based on color. Continue clicking the box to cycle through the choices. The center of the kolam is always blank. The top-most square is usually 0 but you can always swap your 0's and 1's with the swap button. As you fill the matrix, the translated message will update at the bottom of this page.</p><button id="ok">ok</button> </div>
+
+</main>
+<script src="./main.js"></script>
+        </body>
+</html>
