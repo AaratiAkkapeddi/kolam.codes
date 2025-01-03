@@ -209,7 +209,7 @@ function mousePressed() {
   }
 }
 function touchStart(){
-  let drag = [mouseX, mouseY]
+   drag = [mouseX, mouseY]
 }
 function touchEnded() {
   if(window.innerWidth <= 768){
