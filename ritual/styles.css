@@ -8,6 +8,7 @@
 
 body{
     margin:0;
+    touch-action: none;
     background-color: var(--bg);
     color: var(--color);
     font-size: var(--font-size);
@@ -193,9 +194,11 @@ main.on canvas{
     top:auto;
     transform: none;
 }
-*{
-    touch-action: manipulation;
-
+main{
+    touch-action: none;
+}
+canvas{
+    touch-action: pan-x pan-y pinch-zoom;
 }
 .settings{
     display: flex;
