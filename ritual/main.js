@@ -7,8 +7,8 @@ let fs = 12;
 let middle = 0;
 let photo;
 let drag = false;
-
-
+let touchIsDown = false;
+let currNum = "0";
 
 document.querySelector("#flip").addEventListener("click", flipNumbers);
 
@@ -135,6 +135,16 @@ function setup() {
 
 function draw() {
 
+  touchIsDown = touches.length > 0;
+  if (touchIsDown) {
+    touchX = touches[0].x;
+    touchY = touches[0].y;
+  } 
+  
+
+  if(touchIsDown || mouseIsPressed){
+    checkCoord()
+  }
   clear();
   // background(0);  
   image(photo,0,0, width, height )
@@ -196,43 +206,81 @@ function makeGrid(dotCount) {
   coords[1].num = "1"
 }
 
-function mousePressed() {
-  if(window.innerWidth > 768 ){
+function mousePressed(){
   coords.forEach((coord, index) => {
     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-      if (coord.num == "1") {
-        coord.num = "0";
-      } else if (coord.num == "0") {
-        coord.num = "";
-      } else {
-        coord.num = "1";
+      if(coord.num == ""){
+        currNum = "0";
+      }else if(coord.num == "0"){
+        currNum = "1"
+      }else if(coord.num == "1"){
+        currNum = ""
       }
     }
   });
-  processNums(coords);
-  }
 }
 function touchStarted(){
-   drag = [mouseX, mouseY]
-}
-function touchEnded() {
-  if(window.innerWidth <= 768){
-    if((dist(mouseX,mouseY,drag[0],drag[1]) < 10)){
   coords.forEach((coord, index) => {
     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-      if (coord.num == "1") {
-        coord.num = "0";
-      } else if (coord.num == "0") {
-        coord.num = "";
-      } else {
-        coord.num = "1";
+      if(coord.num == ""){
+        currNum = "0";
+      }else if(coord.num == "0"){
+        currNum = "1"
+      }else if(coord.num == "1"){
+        currNum = ""
       }
     }
   });
+}
+function checkCoord() {
+
+  coords.forEach((coord, index) => {
+    if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+      coord.num = currNum
+    }
+  });
   processNums(coords);
+  
 }
-}
-}
+
+
+// function mousePressed() {
+//   if(window.innerWidth > 768 ){
+//   coords.forEach((coord, index) => {
+//     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+//       if (coord.num == "1") {
+//         coord.num = "0";
+//       } else if (coord.num == "0") {
+//         coord.num = "";
+//       } else {
+//         coord.num = "1";
+//       }
+//     }
+//   });
+//   processNums(coords);
+//   }
+// }
+// function touchStarted(){
+//    drag = [mouseX, mouseY]
+// }
+// function touchEnded() {
+//   if(window.innerWidth <= 768){
+//     if((dist(mouseX,mouseY,drag[0],drag[1]) < 10)){
+//   coords.forEach((coord, index) => {
+//     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+//       if (coord.num == "1") {
+//         coord.num = "0";
+//       } else if (coord.num == "0") {
+//         coord.num = "";
+//       } else {
+//         coord.num = "1";
+//       }
+//     }
+//   });
+//   processNums(coords);
+// }
+// }
+// }
 
 class Digit {
   constructor(x, y, size, num) {
@@ -247,6 +295,13 @@ class Digit {
     // This code runs once when myFrog.show() is called.
 
     fill(0, 0, 0, 100);
+    if(this.num == "1" ){
+      fill(50, 0, 0, 160);
+    }else if(this.num == "0"){
+      fill(0, 0, 0, 160);
+    }else{
+      fill(0, 0, 0, 100);
+    }
     stroke(255, 255,255 ,100);
     strokeWeight(0.5)
     rect(this.x, this.y, this.size, this.size);
