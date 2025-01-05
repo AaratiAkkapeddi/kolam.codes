@@ -120,8 +120,6 @@ function setup() {
   textAlign(CENTER);
   rectMode(CENTER);
   angleMode(DEGREES);
-
-
   if (window.innerWidth > 768) {
     c = createCanvas(window.innerWidth, window.innerWidth);
   } else {
@@ -140,8 +138,6 @@ function draw() {
     touchX = touches[0].x;
     touchY = touches[0].y;
   } 
-  
-
   if(touchIsDown || mouseIsPressed){
     checkCoord()
   }
@@ -244,43 +240,7 @@ function checkCoord() {
 }
 
 
-// function mousePressed() {
-//   if(window.innerWidth > 768 ){
-//   coords.forEach((coord, index) => {
-//     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-//       if (coord.num == "1") {
-//         coord.num = "0";
-//       } else if (coord.num == "0") {
-//         coord.num = "";
-//       } else {
-//         coord.num = "1";
-//       }
-//     }
-//   });
-//   processNums(coords);
-//   }
-// }
-// function touchStarted(){
-//    drag = [mouseX, mouseY]
-// }
-// function touchEnded() {
-//   if(window.innerWidth <= 768){
-//     if((dist(mouseX,mouseY,drag[0],drag[1]) < 10)){
-//   coords.forEach((coord, index) => {
-//     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-//       if (coord.num == "1") {
-//         coord.num = "0";
-//       } else if (coord.num == "0") {
-//         coord.num = "";
-//       } else {
-//         coord.num = "1";
-//       }
-//     }
-//   });
-//   processNums(coords);
-// }
-// }
-// }
+
 
 class Digit {
   constructor(x, y, size, num) {
