@@ -194,6 +194,9 @@ main.on canvas{
     top:auto;
     transform: none;
 }
+#grid{
+    touch-action: none;
+}
 main{
     touch-action: none;
 }
