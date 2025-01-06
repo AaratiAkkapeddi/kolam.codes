@@ -133,7 +133,7 @@ function setup() {
 
 function draw() {
 
-  touchIsDown = touches.length > 0;
+  touchIsDown = touches.length == 1;
   if (touchIsDown) {
     touchX = touches[0].x;
     touchY = touches[0].y;
