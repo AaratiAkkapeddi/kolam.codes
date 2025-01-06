@@ -15,9 +15,11 @@ document.querySelector("#pan-tool").addEventListener("click", function(){
   if(document.querySelector("#pan-tool").classList.contains("on")){
     document.querySelector("#grid").classList.remove("panning");
     this.classList.remove("on")
+    panning = false;
   }else{
     document.querySelector("#grid").classList.add("panning");
     this.classList.add("on")
+    panning = true;
   }
 });
 
