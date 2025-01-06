@@ -126,6 +126,7 @@ canvas{
     max-width: 800px;
 }
 #info{
+    user-select: none;
 
 }
 main .instruction-modal{
