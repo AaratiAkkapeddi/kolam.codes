@@ -9,21 +9,25 @@ let photo;
 let drag = false;
 let touchIsDown = false;
 let currNum = "0";
+let final = ''
 let panning = false;
+let fixed = [0, 1, 90, 110, 131, 132, 133, 154, 155, 156, 157, 158, 179, 180, 181, 182, 183, 184, 185, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 235, 236, 237, 238, 239, 240, 241, 262, 263, 264, 265, 266, 287, 288, 289, 310, 330]
 
 document.querySelector("#pan-tool").addEventListener("touchstart", function(){
+  if(document.querySelector("#pan-tool").classList.contains("on")){
+    document.querySelector("#grid").classList.remove("panning");
+    document.querySelector("#pan-tool").classList.remove("on")
+    panning = false;
+  }else{
     document.querySelector("#grid").classList.add("panning");
     document.querySelector("#pan-tool").classList.add("on")
     panning = true;
-    console.log("DOWN")
+  }
+    
 });
-document.addEventListener("touchend", function(){
-  document.querySelector("#grid").classList.remove("panning");
-  document.querySelector("#pan-tool").classList.remove("on")
-  panning = false;
-})
 
-document.querySelector("#flip").addEventListener("click", flipNumbers);
+
+// document.querySelector("#flip").addEventListener("click", flipNumbers);
 
 document.querySelector("#ok").addEventListener("click", function(){
   document.querySelector('.instruction-modal').classList.add('close')
@@ -69,10 +73,12 @@ document.querySelector("#copy-text").addEventListener("click", function(){
 
 function flipNumbers(){
    coords.forEach((coord, index) => {
-    if(coord.num == "1"){
-      coord.num = "0"
-    }else if(coord.num == "0"){
-      coord.num = "1"
+    if(!fixed.includes(index)){
+      if(coord.num == "1"){
+        coord.num = "0"
+      }else if(coord.num == "0"){
+        coord.num = "1"
+      }
     }
   });
   processNums(coords);
@@ -102,9 +108,13 @@ function processNums(arr) {
   let message = "";
   let str = "";
   let churChar = "";
-
+  final = ""
   coords.forEach((coord, index) => {
     str = str + coord.num;
+    if(coord.num == ""){
+      final = final + " " + (index).toString()
+    }
+
   });
   str = str.trim();
   str.split("").forEach((char, index) => {
@@ -121,6 +131,7 @@ function processNums(arr) {
     }
   });
   message = message.trim();
+
   document.querySelector("#num").innerHTML = message;
 }
 
@@ -223,6 +234,7 @@ function makeGrid(dotCount) {
 function mousePressed(){
     if(!panning){
     coords.forEach((coord, index) => {
+      if(!fixed.includes(index)){
       if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
         if(coord.num == ""){
           currNum = "0";
@@ -232,6 +244,7 @@ function mousePressed(){
           currNum = ""
         }
       }
+    }
     });
   }
 }
@@ -255,9 +268,12 @@ function touchStarted(){
 function checkCoord() {
 if(!panning){
     coords.forEach((coord, index) => {
-    if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-      coord.num = currNum
-    }
+      if(!fixed.includes(index)){
+          if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+            coord.num = currNum
+          }
+      }
+  
   });
   processNums(coords);
 }
