@@ -127,7 +127,7 @@ canvas{
 }
 #info{
     user-select: none;
-
+    margin:0;
 }
 main .instruction-modal{
     display: flex;
@@ -153,7 +153,7 @@ main .instruction-modal.close{
     margin-top: var(--space);
     padding: var(--space);
     position: fixed;
-    bottom:0;
+    top:0;
     margin:0 auto;
     z-index: 2;
     left:0;
@@ -162,7 +162,11 @@ main .instruction-modal.close{
 #message > *{
     max-width: 900px;
 }
-
+#message > span{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
 main #message{
   display: block;
 }
@@ -171,6 +175,7 @@ main #message{
     color: var(--bg);
     padding: 5px;
     min-height: 1em;
+    margin-bottom: 0;
 }
 #copy-text{
     border:none;
@@ -178,6 +183,7 @@ main #message{
     height: 25px;
     margin: 0;
     padding: 0;
+    margin: 0;
 }
 #copy-text:hover{
     opacity: 0.8;
@@ -212,7 +218,7 @@ main.on canvas{
     position: fixed;
     right: var(--space);
     z-index: 2;
-    bottom: 200px;
+    bottom: 50px;
 }
 main{
     touch-action: none;
@@ -221,13 +227,13 @@ html, body {touch-action: none;}
 /* canvas{
     touch-action: pan-x pan-y pinch-zoom;
 } */
+
 .settings{
     display: flex;
-    width: calc(100% - (var(--space)*2));
     position:fixed;
     top:0;
-    z-index: 2;
-    left:0;
+    z-index: 9;
+    right:0;
     padding: var(--space);    
     font-style: italic;
     justify-content: space-between;
@@ -253,6 +259,9 @@ html, body {touch-action: none;}
     position: fixed;
     opacity: 0;
     z-index: 2;
+    margin:0;
+    margin-top:-40px;
+    margin-left:40px;
     transition:0.2s;
     color: var(--color-highlight);
 }
