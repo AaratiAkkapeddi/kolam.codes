@@ -9,6 +9,17 @@ let photo;
 let drag = false;
 let touchIsDown = false;
 let currNum = "0";
+let panning = false;
+
+document.querySelector("#pan-tool").addEventListener("click", function(){
+  if(document.querySelector("#pan-tool").classList.contains("on")){
+    document.querySelector("#grid").classList.remove("panning");
+    this.classList.remove("on")
+  }else{
+    document.querySelector("#grid").classList.add("panning");
+    this.classList.add("on")
+  }
+});
 
 document.querySelector("#flip").addEventListener("click", flipNumbers);
 
@@ -123,7 +134,7 @@ function setup() {
   if (window.innerWidth > 768) {
     c = createCanvas(window.innerWidth, window.innerWidth);
   } else {
-    c = createCanvas(window.innerWidth, window.innerWidth );
+    c = createCanvas(window.innerWidth * 2.9, window.innerWidth * 2.9 );
   }
   c.parent("#grid")
   background(0);
@@ -138,7 +149,7 @@ function draw() {
     touchX = touches[0].x;
     touchY = touches[0].y;
   } 
-  if(touchIsDown || mouseIsPressed){
+  if((touchIsDown || mouseIsPressed ) && !panning){
     checkCoord()
   }
   clear();
@@ -203,6 +214,24 @@ function makeGrid(dotCount) {
 }
 
 function mousePressed(){
+    if(!panning){
+    coords.forEach((coord, index) => {
+      if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+        if(coord.num == ""){
+          currNum = "0";
+        }else if(coord.num == "0"){
+          currNum = "1"
+        }else if(coord.num == "1"){
+          currNum = ""
+        }
+      }
+    });
+  }
+}
+function touchStarted(){
+  if(!panning){
+
+
   coords.forEach((coord, index) => {
     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
       if(coord.num == ""){
@@ -215,18 +244,6 @@ function mousePressed(){
     }
   });
 }
-function touchStarted(){
-  coords.forEach((coord, index) => {
-    if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-      if(coord.num == ""){
-        currNum = "0";
-      }else if(coord.num == "0"){
-        currNum = "1"
-      }else if(coord.num == "1"){
-        currNum = ""
-      }
-    }
-  });
 }
 function checkCoord() {
 
