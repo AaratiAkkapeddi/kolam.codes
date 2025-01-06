@@ -11,17 +11,16 @@ let touchIsDown = false;
 let currNum = "0";
 let panning = false;
 
-document.querySelector("#pan-tool").addEventListener("click", function(){
-  if(document.querySelector("#pan-tool").classList.contains("on")){
-    document.querySelector("#grid").classList.remove("panning");
-    this.classList.remove("on")
-    panning = false;
-  }else{
+document.querySelector("#pan-tool").addEventListener("touchStart", function(){
     document.querySelector("#grid").classList.add("panning");
-    this.classList.add("on")
+    document.querySelector("#pan-tool").classList.add("on")
     panning = true;
-  }
 });
+document.addEventListener("touchend", function(){
+  document.querySelector("#grid").classList.remove("panning");
+  document.querySelector("#pan-tool").classList.remove("on")
+  panning = false;
+})
 
 document.querySelector("#flip").addEventListener("click", flipNumbers);
 
@@ -248,13 +247,15 @@ function touchStarted(){
 }
 }
 function checkCoord() {
-
-  coords.forEach((coord, index) => {
+if(!panning){
+    coords.forEach((coord, index) => {
     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
       coord.num = currNum
     }
   });
   processNums(coords);
+}
+
   
 }
 

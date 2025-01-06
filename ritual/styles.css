@@ -205,6 +205,10 @@ main.on canvas{
 }
 #pan-tool{
     display: none;
+    position: absolute;
+    right: var(--space);
+    z-index: 2;
+    top: -75px;
 }
 main{
     touch-action: none;
@@ -237,6 +241,9 @@ html, body {touch-action: none;}
     border:1px solid white;
     padding: 
 } */
+ #mobile-only{
+    display: none;
+ }
 #copy-success{
     pointer-events: none;
     position: fixed;
@@ -276,6 +283,14 @@ html, body {touch-action: none;}
     }
     #pan-tool.on {
         box-shadow:rgb(243, 247, 225) 0px 0px 12px;
+    }
+    #mobile-only{
+        display: inline;
+    }
+    #mobile-only svg{
+        width: 20px;
+        height:20px;
+        padding:0 5px;
     }
     #adjust-image{
         margin-top:var(--space);
