@@ -11,12 +11,13 @@ let touchIsDown = false;
 let currNum = "0";
 let panning = false;
 
-document.querySelector("#pan-tool").addEventListener("mousedown", function(){
+document.querySelector("#pan-tool").addEventListener("touchstart", function(){
     document.querySelector("#grid").classList.add("panning");
     document.querySelector("#pan-tool").classList.add("on")
     panning = true;
+    console.log("DOWN")
 });
-document.addEventListener("mouseup", function(){
+document.addEventListener("touchend", function(){
   document.querySelector("#grid").classList.remove("panning");
   document.querySelector("#pan-tool").classList.remove("on")
   panning = false;
