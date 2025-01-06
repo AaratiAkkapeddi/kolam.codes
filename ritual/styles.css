@@ -208,10 +208,10 @@ main.on canvas{
 }
 #pan-tool{
     display: none;
-    position: absolute;
+    position: fixed;
     right: var(--space);
     z-index: 2;
-    top: -75px;
+    bottom: 200px;
 }
 main{
     touch-action: none;
