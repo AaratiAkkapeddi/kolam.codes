@@ -11,12 +11,12 @@ let touchIsDown = false;
 let currNum = "0";
 let panning = false;
 
-document.querySelector("#pan-tool").addEventListener("touchStart", function(){
+document.querySelector("#pan-tool").addEventListener("mousedown", function(){
     document.querySelector("#grid").classList.add("panning");
     document.querySelector("#pan-tool").classList.add("on")
     panning = true;
 });
-document.addEventListener("touchend", function(){
+document.addEventListener("mouseup", function(){
   document.querySelector("#grid").classList.remove("panning");
   document.querySelector("#pan-tool").classList.remove("on")
   panning = false;
@@ -141,6 +141,11 @@ function setup() {
   background(0);
   middle = floor(dotCount / 2);
   makeGrid(dotCount);
+  if(window.innerWidth < 768){
+    var overflowContainer = document.querySelector('#grid');
+    console.log(overflowContainer)
+    overflowContainer.scrollLeft = width/2.75;
+  }
 }
 
 function draw() {
