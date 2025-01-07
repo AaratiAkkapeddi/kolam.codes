@@ -221,9 +221,9 @@ main.on canvas{
     pointer-events: none;
     display: none;
     position: fixed;
-    right: calc(50vw - 45px);
+    right: calc(50vw - 31px);
     z-index: 2;
-    bottom: 70px;
+    bottom: calc((100vh - 184px)/2);
 }
 main{
     touch-action: none;

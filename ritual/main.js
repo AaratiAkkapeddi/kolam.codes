@@ -188,7 +188,8 @@ function setup() {
   if(window.innerWidth < 768){
     var overflowContainer = document.querySelector('#grid');
     console.log(overflowContainer)
-    overflowContainer.scrollLeft = width/2.75;
+    overflowContainer.scrollLeft = (((window.innerWidth * 2.9))/2 + 50)/1.45;
+    overflowContainer.scrollTop = 70;
   }
 }
 
