@@ -7,7 +7,6 @@
 }
 body *{
     user-select: none;
-    touch-action: none;
 }
 body{
     margin:0;
@@ -211,9 +210,10 @@ main.on canvas{
     color: yellow;
 }
 #grid{
-    touch-action: none;
+    /* touch-action: none; */
+    touch-action: pan-x pan-y;
 }
-body #grid.panning{
+#grid.panning{
     touch-action: pan-x pan-y;
 }
 #pan-tool{
