@@ -168,7 +168,7 @@ function processNums(arr) {
 }
 
 function preload(){
-  photo = loadImage("./assets/fkpoc.png")
+  photo = loadImage("./assets/fkpoc.jpg")
 }
 
 
