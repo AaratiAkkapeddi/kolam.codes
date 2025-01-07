@@ -28,16 +28,17 @@ document.querySelector("#grid").addEventListener("touchstart", function(e){
  document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
   e.preventDefault()
 })
-document.addEventListener("touchmove", (event) => {
-  if(panning){
-    let touch = e.touches[0]
-    document.querySelector("#pan-tool").animate({
-        left: `${touch.pageX}px`,
-        top: `${touch.pageY}px`
+// document.addEventListener("touchmove", (e) => {
+//   if(panning){
+//     console.log('hello?')
+//     let touch = e.touches[0]
+//     document.querySelector("#pan-tool").animate({
+//         left: `${touch.pageX}px`,
+//         top: `${touch.pageY}px`
     
-    }, {duration: 100, fill: "forwards"})
-  }
-});
+//     }, {duration: 100, fill: "forwards"})
+//   }
+// });
 // document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
 //   // let brect = document.querySelector("#pan-tool").getBoundingClientRect();
 //   // let touch = e.touches[0]
