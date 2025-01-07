@@ -16,7 +16,7 @@ let fixed = [0, 1, 90, 110, 131, 132, 133, 154, 155, 156, 157, 158, 179, 180, 18
 document.querySelector("#grid").addEventListener("touchstart", function(e){
   let brect = document.querySelector("#pan-tool").getBoundingClientRect();
   let touch = e.touches[0]
-  if(touch.pageX > brect.left && touch.pageY > brect.top){
+  if((touch.pageX > brect.left && touch.pageY > brect.top ) && touch.pageX < (brect.left + brect.width) && touch.pageY < (brect.top + brect.height)){
       document.querySelector("#grid").classList.add("panning");
       document.querySelector("#pan-tool").classList.add("on")
       panning = true;  
