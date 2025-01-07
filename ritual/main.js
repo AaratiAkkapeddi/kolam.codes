@@ -13,15 +13,17 @@ let final = ''
 let panning = false;
 let fixed = [0, 1, 90, 110, 131, 132, 133, 154, 155, 156, 157, 158, 179, 180, 181, 182, 183, 184, 185, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 235, 236, 237, 238, 239, 240, 241, 262, 263, 264, 265, 266, 287, 288, 289, 310, 330]
 
-document.querySelector("#grid").addEventListener("touchstart", function(e){
-  let brect = document.querySelector("#pan-tool").getBoundingClientRect();
-  let touch = e.touches[0]
-  if(touch.pageX > brect.left && touch.pageY > brect.top){
+document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
+  // let brect = document.querySelector("#pan-tool").getBoundingClientRect();
+  // let touch = e.touches[0]
+  if(document.querySelector("#pan-tool").classList.contains("on")){
+      document.querySelector("#grid").classList.remove("panning");
+      document.querySelector("#pan-tool").classList.remove("on")
+      panning = true;  
+  }else{
       document.querySelector("#grid").classList.add("panning");
       document.querySelector("#pan-tool").classList.add("on")
       panning = true;  
-  }else{
-    e.preventDefault();
   }
 
 });
