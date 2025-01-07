@@ -28,7 +28,15 @@ document.querySelector("#grid").addEventListener("touchstart", function(e){
  document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
   e.preventDefault()
 })
-
+document.addEventListener("touchmove", (event) => {
+  if(panning){
+    document.querySelector("#pan-tool").animate({
+        left: `${clientX}px`,
+        top: `${clientY}px`
+    
+    }, {duration: 100, fill: "forwards"})
+  }
+});
 // document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
 //   // let brect = document.querySelector("#pan-tool").getBoundingClientRect();
 //   // let touch = e.touches[0]
