@@ -1,5 +1,5 @@
 
-let dotCount = 29;
+// let dotCount = 29;
 let coords = []; //all dots
 let uncoords = [];
 let nums = [];
@@ -11,7 +11,7 @@ let touchIsDown = false;
 let currNum = "0";
 let final = ''
 let panning = false;
-let fixed = [0, 1, 90, 110, 131, 132, 133, 154, 155, 156, 157, 158, 179, 180, 181, 182, 183, 184, 185, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 235, 236, 237, 238, 239, 240, 241, 262, 263, 264, 265, 266, 287, 288, 289, 310, 330]
+// let fixed = [0, 1, 90, 110, 131, 132, 133, 154, 155, 156, 157, 158, 179, 180, 181, 182, 183, 184, 185, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 235, 236, 237, 238, 239, 240, 241, 262, 263, 264, 265, 266, 287, 288, 289, 310, 330]
 
 document.querySelector("#grid").addEventListener("touchstart", function(e){
   let brect = document.querySelector("#pan-tool").getBoundingClientRect();
@@ -128,12 +128,24 @@ function insertCharacter(str, n) {
   return val;
 }
 
-function binaryToText(str) {
+function fromBinaryString(str) {
   let output = [];
   str.split(" ").forEach((element) => {
     output.push(String.fromCharCode(parseInt(element, 2)));
   });
   return output.join("");
+}
+// Convert Binary Back to Text
+function binaryToText(bin) {
+  console.log(bin)
+  const bytes = [];
+  for (let i = 0; i < bin.length; i += 8) {
+    bytes.push(parseInt(bin.slice(i, i + 8), 2)); // Convert each 8-bit binary segment back to an integer
+  }
+  const txt = new TextDecoder().decode(new Uint8Array(bytes)); // Decode the bytes back into a string
+  console.log(txt)
+  return txt;
+
 }
 
 function processNums(arr) {
@@ -148,27 +160,28 @@ function processNums(arr) {
     }
 
   });
-  str = str.trim();
-  str.split("").forEach((char, index) => {
-    if (index % 8 == 0) {
-      message += binaryToText(churChar);
-      churChar = "";
-      churChar += char;
-    } else if (index == str.length - 1) {
-      churChar += char;
-      message += binaryToText(churChar);
-      churChar = "";
-    } else {
-      churChar += char;
-    }
-  });
+  message = binaryToText(str.trim());
+  // str = str.trim();
+  // str.split("").forEach((char, index) => {
+  //   if (index % 8 == 0) {
+  //     message += binaryToText(churChar);
+  //     churChar = "";
+  //     churChar += char;
+  //   } else if (index == str.length - 1) {
+  //     churChar += char;
+  //     message += binaryToText(churChar);
+  //     churChar = "";
+  //   } else {
+  //     churChar += char;
+  //   }
+  // });
   message = message.trim();
 
   document.querySelector("#num").innerHTML = message;
 }
 
 function preload(){
-  photo = loadImage("./assets/fkpoc.jpg")
+  photo = loadImage(url)
 }
 
 
@@ -260,8 +273,8 @@ function makeGrid(dotCount) {
     }
   }
 
-  coords[0].num = "0"
-  coords[1].num = "1"
+  coords[fixed[0]].num = "0"
+  coords[fixed[1]].num = "1"
 }
 
 function mousePressed(){
