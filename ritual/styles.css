@@ -42,6 +42,47 @@ body > button{
 img{
     filter:invert(1);
     max-height:60vh;
+    margin-bottom: var(--space);
+}
+
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+#gallery a{
+    position:relative;
+    display: inline-block;
+    flex-basis: calc(33.333% - (var(--space)));
+}
+#gallery a .title em{
+    background-color: rgba(0,0,0,0.8);
+    padding: 8px 10px;
+    font-style:normal;
+    text-align: center;
+    min-width: 25px;
+    border-radius: 100%;
+}
+#gallery a .title{
+    display: flex;
+    width: 100%;
+    height: calc(100% - var(--space));
+    position:absolute;
+    z-index: 1;
+    /* background-color: rgba(0,0,0,0.8); */
+    top:0;
+    left:0;
+    text-shadow: #023d3a 0 0 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+#gallery img{
+    width: 100%;
+    height: auto;
+    max-height: none;
+    filter:none;
 }
 img.chart{
     max-height: 50vh;
