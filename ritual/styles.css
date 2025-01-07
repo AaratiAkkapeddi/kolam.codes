@@ -177,6 +177,7 @@ main #message{
     color: var(--bg);
     padding: 5px;
     min-height: 1em;
+    margin-top: var(--space);
     margin-bottom: 0;
 }
 #copy-text{
@@ -328,8 +329,12 @@ html, body {touch-action: none;}
         height: calc(100vh - (var(--space)*4));
         width: calc(100vw - (var(--space)*4));
     }
+    #info{
+        padding: 0px 8px;
+    }
     #message{
         padding: var(--space);
+        padding-bottom: 0;
     }
     
 }
