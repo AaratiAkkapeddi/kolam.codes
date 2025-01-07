@@ -30,9 +30,10 @@ document.querySelector("#grid").addEventListener("touchstart", function(e){
 })
 document.addEventListener("touchmove", (event) => {
   if(panning){
+    let touch = e.touches[0]
     document.querySelector("#pan-tool").animate({
-        left: `${clientX}px`,
-        top: `${clientY}px`
+        left: `${touch.pageX}px`,
+        top: `${touch.pageY}px`
     
     }, {duration: 100, fill: "forwards"})
   }
