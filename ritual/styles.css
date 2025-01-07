@@ -92,12 +92,12 @@ canvas{
 #grid{
     left:0;
     width: calc(100vw - 100px);
-    height: calc(100vh - 350px);
+    height: calc(100vh - 50px);
     overflow: scroll;
     top:0;
     position: absolute;
     padding: 50px;
-    padding-top: 300px;
+    padding-top: 0;
     background-color: black;
 }
 #scene1, #scene2{
@@ -158,8 +158,9 @@ main .instruction-modal.close{
     top:0;
     margin:0 auto;
     z-index: 2;
-    left:0;
-    width:calc(100% - (var(--space) * 2));
+    left:auto;
+    right:0;
+    width:calc(25% - (var(--space) * 2));
 }
 #message > *{
     max-width: 900px;
@@ -305,6 +306,11 @@ html, body {touch-action: none;}
         transform: scale(1.2);
         box-shadow:rgb(243, 247, 225) 0px 0px 12px;
     }
+    #message{
+        left:0;
+        right:auto;
+        width:calc(100% - (var(--space) * 2));
+    }
     #mobile-only{
         display: inline;
     }
@@ -318,6 +324,17 @@ html, body {touch-action: none;}
     }
     .settings{
         font-size: 16px;
+    }
+    #grid{
+        left:0;
+        width: calc(100vw - 100px);
+        height: calc(100vh - 350px);
+        overflow: scroll;
+        top:0;
+        position: absolute;
+        padding: 50px;
+        padding-top: 300px;
+        background-color: black;
     }
     .settings button{
         padding: 3px 8px;
