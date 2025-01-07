@@ -5,7 +5,9 @@
     --color: white;
     --color-highlight: rgb(243, 247, 225);
 }
-
+body *{
+    user-select: none;
+}
 body{
     margin:0;
     touch-action: none;
