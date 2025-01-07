@@ -25,7 +25,9 @@ document.querySelector("#grid").addEventListener("touchstart", function(e){
   }
 
 });
-
+ document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
+  e.preventDefault()
+})
 
 // document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
 //   // let brect = document.querySelector("#pan-tool").getBoundingClientRect();
