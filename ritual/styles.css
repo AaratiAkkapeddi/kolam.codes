@@ -224,7 +224,7 @@ main.on canvas{
     position: fixed;
     right: calc(50vw - 31px);
     z-index: 2;
-    bottom: calc((100vh - 184px)/2);
+    bottom: calc((50vh - 184px)/2);
 }
 main{
     touch-action: none;
@@ -334,6 +334,7 @@ html, body {touch-action: none;}
         position: absolute;
         padding: 50px;
         padding-top: 300px;
+        padding-bottom: 100px;
         background-color: black;
     }
     .settings button{
