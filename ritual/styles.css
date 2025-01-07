@@ -334,7 +334,7 @@ html, body {touch-action: none;}
         position: absolute;
         padding: 50px;
         padding-top: 300px;
-        padding-bottom: 100px;
+        padding-bottom: 300px;
         background-color: black;
     }
     .settings button{
