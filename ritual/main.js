@@ -91,7 +91,7 @@ document.querySelector("#copy-text").addEventListener("click", function(){
       // Remove the temporary textarea element
       document.body.removeChild(tempTextArea);
   
-  
+    // alert(final)
       document.querySelector("#copy-success").classList.add('on');
       setTimeout(function(){
         document.querySelector("#copy-success").classList.remove('on');
