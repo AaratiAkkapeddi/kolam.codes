@@ -193,6 +193,9 @@ function setup() {
   
   if(window.innerWidth < 768) {
     c = createCanvas(window.innerWidth * 2.9, window.innerWidth * 2.9 );
+  }else if(window.innerWidth < 900){
+    c = createCanvas(window.innerWidth * 1.8, window.innerWidth * 1.8);
+
   }else{
     c = createCanvas(window.innerWidth, window.innerWidth);
   }
