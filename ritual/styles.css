@@ -20,6 +20,9 @@ body{
 a, a:visited, a:link, a:focus{
     color:var(--color);
 }
+#home-intro{
+    max-width: 70%;
+}
 
 a:hover{
     color:powderblue;
