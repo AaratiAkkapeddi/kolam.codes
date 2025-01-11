@@ -315,7 +315,7 @@ html, body {touch-action: none;}
 #copy-success.on{
     opacity: 1;
 }
-@media(max-width: 768px){
+@media(max-width: 900px){
     :root{
         --space: 15px;
         --font-size: 18px;
@@ -375,7 +375,7 @@ html, body {touch-action: none;}
         position: absolute;
         padding: 50px;
         padding-top: 300px;
-        padding-bottom: 300px;
+        padding-bottom: 500px;
         background-color: black;
     }
     .settings button{

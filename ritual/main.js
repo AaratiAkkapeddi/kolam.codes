@@ -189,8 +189,10 @@ function setup() {
   textAlign(CENTER);
   rectMode(CENTER);
   angleMode(DEGREES);
-  if (window.innerWidth > 768) {
+  if (window.innerWidth > 900) {
     c = createCanvas(window.innerWidth, window.innerWidth);
+  } else if(window.innerWidth > 768){
+    c = createCanvas(window.innerWidth * 2, window.innerWidth * 2 );
   } else {
     c = createCanvas(window.innerWidth * 2.9, window.innerWidth * 2.9 );
   }
@@ -203,6 +205,11 @@ function setup() {
     console.log(overflowContainer)
     overflowContainer.scrollLeft = (((window.innerWidth * 2.9))/2 + 50)/1.45;
     overflowContainer.scrollTop = 70;
+  }else if(window.innerWidth < 900){
+    var overflowContainer = document.querySelector('#grid');
+    console.log(overflowContainer)
+    overflowContainer.scrollLeft = (((window.innerWidth * 2))/2 + 50)/1.86;
+    overflowContainer.scrollTop = 100;
   }
 }
 
