@@ -226,6 +226,7 @@ main #message{
     border:none;
     width: 25px;
     height: 25px;
+    overflow: visible;
     margin: 0;
     padding: 0;
     margin: 0;
