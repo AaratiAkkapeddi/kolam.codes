@@ -209,10 +209,10 @@ function setup() {
     overflowContainer.scrollLeft = (((window.innerWidth * 2.9))/2 + 50)/1.45;
     overflowContainer.scrollTop = 70;
   }else if(window.innerWidth < 900){
-    // var overflowContainer = document.querySelector('#grid');
-    // console.log(overflowContainer)
-    // overflowContainer.scrollLeft = (((window.innerWidth * 2))/2 + 50)/1.86;
-    // overflowContainer.scrollTop = 100;
+    var overflowContainer = document.querySelector('#grid');
+    console.log(overflowContainer)
+    overflowContainer.scrollLeft = (((window.innerWidth * 2))/2 + 50)/2.3;
+    overflowContainer.scrollTop = 100;
   }
 }
 
