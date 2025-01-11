@@ -189,12 +189,12 @@ function setup() {
   textAlign(CENTER);
   rectMode(CENTER);
   angleMode(DEGREES);
-  if (window.innerWidth > 900) {
-    c = createCanvas(window.innerWidth, window.innerWidth);
-  } else if(window.innerWidth > 768){
-    c = createCanvas(window.innerWidth, window.innerWidth);
-  } else {
+
+  
+  if(window.innerWidth < 768) {
     c = createCanvas(window.innerWidth * 2.9, window.innerWidth * 2.9 );
+  }else{
+    c = createCanvas(window.innerWidth, window.innerWidth);
   }
   c.parent("#grid")
   background(0);
