@@ -6,7 +6,7 @@ body{
     margin:0;
     background-color: var(--bg);
     color: white;
-    font-size: 24px;
+    font-size: 18px;
     font-family: "Yatra One", serif;
     font-optical-sizing: auto;
 }
