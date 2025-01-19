@@ -17,11 +17,14 @@ body{
     font-family: "Yatra One", serif;
     font-optical-sizing: auto;
 }
+body.intro-body{
+    touch-action: manipulation;
+}
 a, a:visited, a:link, a:focus{
     color:var(--color);
 }
 #home-intro{
-    max-width: 70%;
+    max-width: 100%;
 }
 
 a:hover{
@@ -287,11 +290,16 @@ main.on canvas{
 main{
     touch-action: none;
 }
+main.intro-body{
+    touch-action: auto;
+}
 html, body {touch-action: none;}
 /* canvas{
     touch-action: pan-x pan-y pinch-zoom;
 } */
-
+body.intro-body, html.intro-body{
+    touch-action: auto;
+}
 .settings{
     display: flex;
     position:fixed;
