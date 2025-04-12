@@ -421,6 +421,10 @@ function draw() {
 }
 
 function generate(){
+    document.querySelector("canvas").classList.add("animate");
+    setTimeout(function(){
+      document.querySelector("canvas").classList.remove("animate");
+    },2500)
     messageinput = textbox.value();
     redraw()
 }
