@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- Google tag (gtag.js) -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kolam.codes</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <main class="about-main">
+        <div id="nav-about"><a href="./">encode a kolam</a>
+            <a class="button-decode" href="/decode">decode a kolam</a>
+
+</div>
+        
+
+
+<video muted autoplay loop controls>
+    <source src="video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<p>
+
+ I developed a computer program that allows me to translate text into Kolam designs. Kolam (in Tamil) or Muggu (Telugu) is a traditional art form from India. Kolams are auspicious drawings on the floor (usually at the threshold of the home) using rice flour. Kolams are traditionally made by women and created before sunrise. They comprise mathematically complex patterns that feature continuous intertwined lines. 
+</p> <p>
+    
+    To encode text into Kolam designs, I first translate each character into eight-digit binary codes (made from only 0s and 1s). I then use an algorithm to map this translation onto a diamond-shaped matrix of dots. The algorithm moves top to bottom and left to right, drawing loops on each dot that correspond with either 0 or 1 according to the binary code translation of the text. The algorithm connects these loops, making sure to never connect loops associated with “0” to those associated with “1”. The center of the matrix contains blank padding space, allowing the entire pattern to be distributed evenly on the matrix, preserving the perfect square/diamond shape. 
+    </p>
+
+   
+    <br><br>
+    <p>key (note this key only shows latin characters but there are binary translation charts available online for non-latin scripts as well):</p>
+    <img alt="two versions of a kolam pattern, one showing the three different colors of curves and the other acting as a key showing which color corresponds to either 0, 1, or nothing" src="./diagram.svg"/>
+    <img alt="a chart shows what 8-digit sequences of 0 and 1 correspond to which letters of the alphabet" class="chart" src="./chart.svg"/>
+  
+    <br><br>
+    References/Further Readings:
+
+    <ul>
+        <li><a> Dr. Gift Siromoney </a></li>
+        <li><a>Kolam in code recipe by Lavannya Suressh | Critical Code Cookbook</a></li>
+        <li><a>The Kolam Tradition | American Scientist </a></li>
+        <li><a>Significance of Kolam in Tamil Culture | Sahapedia</a></li>
+    </ul><br>
+
+    </main>
+</body>
+</html>
