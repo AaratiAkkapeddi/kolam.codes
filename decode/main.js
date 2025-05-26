@@ -1,64 +1,74 @@
-let capture;
-let sceneNum = 1;
-let dotCount = 11;
+
+// let dotCount = 29;
 let coords = []; //all dots
 let uncoords = [];
 let nums = [];
 let fs = 12;
-let captureMode = false;
-let photo;
 let middle = 0;
-let zoom = 1;
-let tx = 0;
-let ty = 0;
-let r = 0;
-document.querySelector("#x").addEventListener("input", (event) => {
-  tx = eval(event.target.value);
-});
-document.querySelector("#y").addEventListener("input", (event) => {
-  ty = eval(event.target.value);
-});
+let photo;
+let drag = false;
+let touchIsDown = false;
+let currNum = "0";
+let final = ''
+let panning = false;
+// let fixed = [0, 1, 90, 110, 131, 132, 133, 154, 155, 156, 157, 158, 179, 180, 181, 182, 183, 184, 185, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 235, 236, 237, 238, 239, 240, 241, 262, 263, 264, 265, 266, 287, 288, 289, 310, 330]
 
-document.querySelector("#scale").addEventListener("input", (event) => {
-  zoom = eval(event.target.value);
+document.querySelector("#grid").addEventListener("touchstart", function(e){
+  let brect = document.querySelector("#pan-tool").getBoundingClientRect();
+  let touch = e.touches[0]
+  if((touch.pageX > brect.left && touch.pageY > brect.top ) && touch.pageX < (brect.left + brect.width) && touch.pageY < (brect.top + brect.height)){
+      document.querySelector("#grid").classList.add("panning");
+      document.querySelector("#pan-tool").classList.add("on")
+      panning = true;  
+  }else{
+    e.preventDefault();
+  }
+
 });
-document.querySelector("#rotate").addEventListener("input", (event) => {
-  r = eval(event.target.value);
-});
-document.querySelector("#dotNum").addEventListener("change", updateDotCount);
-document.querySelector("#capture").addEventListener("click", takePhoto);
-document.querySelector("#capture-remove").addEventListener("click", removePhoto);
-document.querySelector("#flip").addEventListener("click", flipNumbers);
-document.querySelector("#go-scene2").addEventListener("click", function(){
-   document.querySelector('main').classList.add('on')
-   sceneNum = 2;
+ document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
+  e.preventDefault()
 })
+document.addEventListener("touchmove", (e) => {
+  // if(panning){
+  //   console.log('hello?')
+  //   let touch = e.touches[0]
+  //   document.querySelector("#pan-tool").animate({
+  //       left: `${touch.pageX}px`,
+  //       top: `${touch.pageY}px`
+    
+  //   }, {duration: 100, fill: "forwards"})
+  // }
+});
+// document.querySelector("#pan-tool").addEventListener("touchstart", function(e){
+//   // let brect = document.querySelector("#pan-tool").getBoundingClientRect();
+//   // let touch = e.touches[0]
+//   if(document.querySelector("#pan-tool").classList.contains("on")){
+//       document.querySelector("#grid").classList.remove("panning");
+//       document.querySelector("#pan-tool").classList.remove("on")
+//       panning = true;  
+//   }else{
+//       document.querySelector("#grid").classList.add("panning");
+//       document.querySelector("#pan-tool").classList.add("on")
+//       panning = true;  
+//   }
+
+// });
+document.addEventListener("touchend", function(){
+  document.querySelector("#grid").classList.remove("panning");
+  document.querySelector("#pan-tool").classList.remove("on")
+  panning = false;
+})
+
+// document.querySelector("#flip").addEventListener("click", flipNumbers);
+
 document.querySelector("#ok").addEventListener("click", function(){
   document.querySelector('.instruction-modal').classList.add('close')
 });
 document.querySelector("#info").addEventListener("click", function(){
   document.querySelector('.instruction-modal').classList.remove('close')
 });
-document.querySelector("#go-scene1").addEventListener("click", function(){
-  document.querySelector('main').classList.remove('on')
-  sceneNum = 0;
-})
+
 document.querySelector("#copy-text").addEventListener("click", function(){
-
-    // // Get the text field
-    // var copyText = document.getElementById("num").innerHTML;
-
-  
-    //  // Copy the text inside the text field
-    // navigator.clipboard.writeText(copyText);
-
-    // // Alert the copied text
-
-    
-
-
-
-
 
       const textField = document.getElementById('num');
   
@@ -81,7 +91,7 @@ document.querySelector("#copy-text").addEventListener("click", function(){
       // Remove the temporary textarea element
       document.body.removeChild(tempTextArea);
   
-  
+    // alert(final)
       document.querySelector("#copy-success").classList.add('on');
       setTimeout(function(){
         document.querySelector("#copy-success").classList.remove('on');
@@ -89,80 +99,12 @@ document.querySelector("#copy-text").addEventListener("click", function(){
 
 
 
-
-
 })
 
-function updateDotCount(event) {
-  document.querySelector('#scene1').classList.add('on');
-  coords = [];
-  uncoords = [];
-  nums = [];
-  clear();
-  dotCount = parseInt(event.target.value);
-  middle = floor(dotCount / 2);
-  makeGrid(dotCount);
-}
-
-function flipNumbers(){
-   coords.forEach((coord, index) => {
-    if(coord.num == "1"){
-      coord.num = "0"
-    }else if(coord.num == "0"){
-      coord.num = "1"
-    }
-  });
-  processNums(coords);
-}
-function removePhoto(){
-  photo = null;
-  document.querySelector("#adjust-image").classList.remove('on');
-  capture.remove();
-  captureMode = false;
-  document.querySelector("#capture-remove").classList.remove('on');
-}
-
-function takePhoto(){
 
 
 
 
-
-  if(captureMode){
-    photo = capture;
-    document.querySelector("#capture").innerHTML = "retake photo";
-    captureMode = false;
-    capture.remove();
-    document.querySelector("#capture-remove").innerHTML = "clear photo"
-    document.querySelector("#capture-remove").classList.add('on');
-    document.querySelector("#adjust-image").classList.add('on');
-  }else{
-    document.querySelector("#adjust-image").classList.remove('on');
-    document.querySelector("#capture-remove").innerHTML = "stop cam"
-    document.querySelector("#capture-remove").classList.add('on');
-    captureMode = true;
-    if (window.innerWidth < 768) {
-      let constraints = {
-        audio: false,
-        video: {
-          facingMode: {
-            exact: "environment"
-          }
-        }    
-        //video: {
-          //facingMode: "user"
-        //} 
-      };
-      capture = createCapture(constraints);
-        capture.hide();
-    } else {
-      capture = createCapture(VIDEO)
-      capture.hide();
-    }
-    document.querySelector("#capture").innerHTML = "take reference photo";
-    
-  }
-}
 
 
 function insertCharacter(str, n) {
@@ -175,92 +117,105 @@ function insertCharacter(str, n) {
   return val;
 }
 
-function binaryToText(str) {
+function fromBinaryString(str) {
   let output = [];
   str.split(" ").forEach((element) => {
     output.push(String.fromCharCode(parseInt(element, 2)));
   });
   return output.join("");
 }
+// Convert Binary Back to Text
+function binaryToText(bin) {
+  const bytes = [];
+  for (let i = 0; i < bin.length; i += 8) {
+    bytes.push(parseInt(bin.slice(i, i + 8), 2)); // Convert each 8-bit binary segment back to an integer
+  }
+  const txt = new TextDecoder().decode(new Uint8Array(bytes)); // Decode the bytes back into a string
+  return txt;
+
+}
 
 function processNums(arr) {
   let message = "";
   let str = "";
   let churChar = "";
+  final = ""
   coords.forEach((coord, index) => {
     str = str + coord.num;
-  });
-  str = str.trim();
-  str.split("").forEach((char, index) => {
-    if (index % 8 == 0) {
-      message += binaryToText(churChar);
-      churChar = "";
-      churChar += char;
-    } else if (index == str.length - 1) {
-      churChar += char;
-      message += binaryToText(churChar);
-      churChar = "";
-    } else {
-      churChar += char;
+    if(coord.num == ""){
+      final = final + " " + (index).toString()
     }
+
   });
+  message = binaryToText(str.trim());
+  // str = str.trim();
+  // str.split("").forEach((char, index) => {
+  //   if (index % 8 == 0) {
+  //     message += binaryToText(churChar);
+  //     churChar = "";
+  //     churChar += char;
+  //   } else if (index == str.length - 1) {
+  //     churChar += char;
+  //     message += binaryToText(churChar);
+  //     churChar = "";
+  //   } else {
+  //     churChar += char;
+  //   }
+  // });
   message = message.trim();
+
   document.querySelector("#num").innerHTML = message;
 }
 
-
+function preload(){
+  photo = loadImage(url)
+}
 
 
 function setup() {
   textAlign(CENTER);
   rectMode(CENTER);
   angleMode(DEGREES);
- 
 
+  
+  if(window.innerWidth < 768) {
+    c = createCanvas(window.innerWidth * 1, window.innerWidth * 1 );
+  }else if(window.innerWidth < 900){
+    c = createCanvas(window.innerWidth * 1, window.innerWidth * 1);
 
-
-  if (window.innerWidth > 768) {
-    c = createCanvas(window.innerHeight / 1.8, window.innerHeight / 1.8);
-  } else {
-    c = createCanvas(window.innerHeight / 2.1, window.innerHeight / 2.1);
+  }else{
+    c = createCanvas(window.innerHeight, window.innerHeight);
   }
   c.parent("#grid")
   background(0);
+  middle = floor(dotCount / 2);
+  makeGrid(dotCount);
+  if(window.innerWidth < 768){
+    var overflowContainer = document.querySelector('#grid');
+
+    overflowContainer.scrollLeft = (((window.innerWidth * 2.9))/2 + 50)/1.45;
+    overflowContainer.scrollTop = 70;
+  }else if(window.innerWidth < 900){
+    var overflowContainer = document.querySelector('#grid');
+
+    overflowContainer.scrollLeft = (((window.innerWidth * 2))/2 + 50)/2.3;
+    overflowContainer.scrollTop = 100;
+  }
 }
 
 function draw() {
-  clear();
-  // background(0);
 
-  if(capture && coords.length > 0){
-    let h = (width * 9) / 16;
-    let ratio = h / capture.height;
-    var video_w = capture.width * ratio;
-    let cw = video_w * 2.2;
-    let ch = h * 2.2;
-   
-    if(!captureMode && photo){
-      push()
-      imageMode(CENTER);
-      translate(width / 2, height / 2);
-      scale(zoom);
-      rotate(r);
-      imageMode(CENTER)
-      image(photo,tx, ty, cw, ch)
-      pop()
-    }else if(capture && captureMode){
-      push()
-      imageMode(CENTER);
-      translate(width / 2, height / 2);
-      scale(zoom);
-      rotate(r);
-      imageMode(CENTER)
-      image(capture, tx,ty, cw, ch);
-      pop()
-    }
+  touchIsDown = touches.length == 1;
+  if (touchIsDown) {
+    touchX = touches[0].x;
+    touchY = touches[0].y;
+  } 
+  if((touchIsDown || mouseIsPressed ) && !panning){
+    checkCoord()
   }
-  
-
+  clear();
+  // background(0);  
+  image(photo,0,0, width, height )
   textSize(fs);
   coords.forEach((coord, index) => {
     coord.show();
@@ -268,6 +223,7 @@ function draw() {
   uncoords.forEach((coord, index) => {
     coord.show();
   });
+  
 }
 
 /**************************/
@@ -309,44 +265,66 @@ function makeGrid(dotCount) {
 
       noStroke();
       fs = dotRadius * 4;
+
       // rect(x * fw , y * fy, dotRadius*9, dotRadius*9);
     }
   }
+
+  coords[fixed[0]].num = "0"
+  coords[fixed[1]].num = "1"
 }
 
-function mousePressed() {
-  if(window.innerWidth > 768 && sceneNum == 2){
-  coords.forEach((coord, index) => {
-    if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-      if (coord.num == "1") {
-        coord.num = "0";
-      } else if (coord.num == "0") {
-        coord.num = "";
-      } else {
-        coord.num = "1";
+// function mousePressed(){
+//     if(!panning){
+//     coords.forEach((coord, index) => {
+//       if(!fixed.includes(index)){
+//       if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+//         //index
+//         currNum = fullString[index];
+
+//         if(coord.num == ""){
+//           currNum = fullString[index];
+//         }
+//       }
+//     }
+//     });
+//   }
+// }
+function touchStarted(){
+//   if(!panning){
+
+
+//   coords.forEach((coord, index) => {
+//     console.log(index)
+//     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+//       // currNum = fullString[index];
+//       currNum = fullString[index];
+//       if(coord.num == ""){
+//         currNum = fullString[index];
+//       }
+//     }
+//   });
+// }
+}
+function checkCoord() {
+if(!panning){
+    coords.forEach((coord, index) => {
+      if(!fixed.includes(index)){
+          if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+            currNum = fullString[index];
+            coord.num = currNum
+          }
       }
-    }
+  
   });
   processNums(coords);
-  }
 }
 
-function touchEnded() {
-  if(window.innerWidth <= 768 && sceneNum == 2){
-  coords.forEach((coord, index) => {
-    if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-      if (coord.num == "1") {
-        coord.num = "0";
-      } else if (coord.num == "0") {
-        coord.num = "";
-      } else {
-        coord.num = "1";
-      }
-    }
-  });
-  processNums(coords);
+  
 }
-}
+
+
+
 
 class Digit {
   constructor(x, y, size, num) {
@@ -361,6 +339,13 @@ class Digit {
     // This code runs once when myFrog.show() is called.
 
     fill(0, 0, 0, 100);
+    if(this.num == "1" ){
+      fill(50, 0, 0, 160);
+    }else if(this.num == "0"){
+      fill(0, 0, 0, 160);
+    }else{
+      fill(0, 0, 0, 100);
+    }
     stroke(255, 255,255 ,100);
     strokeWeight(0.5)
     rect(this.x, this.y, this.size, this.size);

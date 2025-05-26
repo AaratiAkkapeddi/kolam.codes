@@ -275,7 +275,9 @@ function insertSpaces(bincode){
         }
         
     }
+    console.log(txt2)
     return(txt2)
+
 }
 let textbox, button;
 let dotCount; //has to be an odd number
@@ -363,10 +365,11 @@ function setup() {
     button.parent("kolam")
     let c;
    if(window.innerWidth > 768){
-    c = createCanvas(window.innerHeight/1.2, window.innerHeight/1.2);
+    c = createCanvas(window.innerHeight/1.4, window.innerHeight/1.4);
+    
 
    }else{
-    c = createCanvas(window.innerHeight/2, window.innerHeight/2);
+    c = createCanvas(window.innerHeight/2.2, window.innerHeight/2.2);
 
    }
 

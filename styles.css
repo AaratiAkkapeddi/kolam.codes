@@ -15,6 +15,10 @@ body{
     font-family: "Yatra One", serif;
     font-optical-sizing: auto;
 }
+h1{
+    font-size: 24px;
+    font-weight: normal;
+}
 a, a:visited, a:link, a:focus{
     color:white;
 }
@@ -27,14 +31,28 @@ body > button{
     right:15px;
 
 }
-#about{
+
+body .button-decode{
     position:fixed;
-    top:0;
+    top:15px;
+    left:15px;
     text-decoration: none;
-    right:0;
-    background-color: var(--bg);
-    padding:10px 15px;
+    border: 1px solid;
+    background-color: #023d3a;
+    padding: 3px 10px;
+    z-index: 9;
 }
+body #about{
+    position:fixed;
+    top:15px;
+    right:15px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 3px 10px;
+    background-color: #023d3a;
+    z-index: 9;
+}
+
 img{
     filter:invert(1);
     max-height:60vh;
@@ -44,6 +62,14 @@ img.chart{
 }
 main{
     margin: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+main.hp{
+    height: calc(100vh - 48px);
 }
 h2{
     font-weight: normal;
@@ -79,29 +105,60 @@ canvas{
     display: block;
     z-index: 0;
     margin:0 auto;
+    margin-top: 24px;
 }
+
 canvas.animate{ 
     animation-name: update;
     animation-duration: 1.8s;
     animation-timing-function: ease-in-out;
 }
 #nav-about{
-    display: flex;
-    width: 100%;
-    margin-bottom: 50px;
-    justify-content: space-between;
+    position:fixed;
+    top:15px;
+    right:15px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 3px 10px;
+    text-decoration: none;
+    background-color: #023d3a;
+    z-index: 9;
+}
+#nav-about a{
+    text-decoration: none;
+}
+main.about-main{
+    margin-top: 55px;
+}
+main.about-main p,main.about-main li{
+    text-align: left;
+}
+video{
+    width: auto;
+    height: 60vh;
 }
 
-@media(max-width: 768px){
+@media(max-width: 900px){
     canvas{
         margin-top:24px;
     }
+    video{
+        width: 100%;
+        height: auto;
+    }
     main{
-        margin-top:45px;
+        margin-top: 100px;
+    }
+    main.about-main{
+        margin-top: 80px;
     }
     
     #nav-about{
         flex-direction: column;
     }
-    
+    body, input, button{
+
+        font-size: 20px;
+
+    }
 }

@@ -5,17 +5,26 @@
     --color: white;
     --color-highlight: rgb(243, 247, 225);
 }
-
+body *{
+    user-select: none;
+}
 body{
     margin:0;
+    touch-action: none;
     background-color: var(--bg);
     color: var(--color);
     font-size: var(--font-size);
     font-family: "Yatra One", serif;
     font-optical-sizing: auto;
 }
+body.intro-body{
+    touch-action: manipulation;
+}
 a, a:visited, a:link, a:focus{
     color:var(--color);
+}
+#home-intro{
+    max-width: 100%;
 }
 
 a:hover{
@@ -25,7 +34,7 @@ body > button{
     position:fixed;
     bottom:15px;
     right:15px;
-
+    
 
 }
 #about{
@@ -39,6 +48,48 @@ body > button{
 img{
     filter:invert(1);
     max-height:60vh;
+    margin-bottom: var(--space);
+}
+
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+#gallery a{
+    position:relative;
+    display: inline-block;
+    flex-basis: calc(33.333% - (var(--space)));
+}
+#gallery a .title em{
+    background-color: rgba(0,0,0,0.8);
+    padding: 8px 10px;
+    font-style:normal;
+    text-align: center;
+    min-width: 25px;
+    display: none;
+    border-radius: 100%;
+}
+#gallery a .title{
+    display: flex;
+    width: 100%;
+    height: calc(100% - var(--space));
+    position:absolute;
+    z-index: 1;
+    /* background-color: rgba(0,0,0,0.8); */
+    top:0;
+    left:0;
+    text-shadow: #023d3a 0 0 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+#gallery img{
+    width: 100%;
+    height: auto;
+    max-height: none;
+    filter:none;
 }
 img.chart{
     max-height: 50vh;
@@ -63,7 +114,7 @@ input{
     z-index: 1;
 }
 button,select{
-    background-color: var(--bg);
+    background-color: #023d3acc;
     color:white;
     border:1px dotted white;
     padding: 3px 10px;
@@ -81,8 +132,22 @@ canvas{
     display: block;
     z-index: 0;
     margin:0 auto;
+    overflow: hidden;
 }
-
+#flip{
+    display: none;
+}
+#grid{
+    left:0;
+    width: calc(100vw - 100px);
+    height: calc(100vh - 50px);
+    overflow: scroll;
+    top:0;
+    position: absolute;
+    padding: 50px;
+    padding-top: 0;
+    background-color: black;
+}
 #scene1, #scene2{
     display: flex;
     flex-direction: column;
@@ -92,12 +157,30 @@ canvas{
     max-width: 1000px;
     margin: 0 auto;
 }
-
-#scene2{
-    display: none;
+#encode{
+    position: fixed;
+    background-color: #023d3a;
+    z-index: 2;
+    border: 1px solid;
+    top:var(--space);
+    left: var(--space);
+}
+#about{
+    position: fixed;
+    background-color: #023d3a;
+    z-index: 2;
+    padding:3px 10px;
+    border: 1px solid;
+    top:var(--space);
+    right: var(--space);
+}
+#encode a, #about a{
+    text-decoration: none;
+}
+.instruction-modal button a{
+    text-decoration: none;
 }
 .instruction-modal{
-    display: none;
     position:fixed;
     top:0;
     left:0;
@@ -114,31 +197,20 @@ canvas{
     max-width: 800px;
 }
 #info{
-    padding:0;
-    position:fixed;
-    top:0;
-    right:0;
-    border:none;
-    border-bottom: 1px dotted;
+    user-select: none;
+    margin:0;
 }
-main.on .instruction-modal{
+main .instruction-modal{
     display: flex;
 }
-main.on .instruction-modal.close{
-    display: none;
-}
-main.on #scene2{
-    display:flex;
-
-}
-
-main.on #scene1{
+main .instruction-modal.close{
     display: none;
 }
 
-#scene1.on svg{
-    display: none;
-}
+
+
+
+
 #go-scene1{
    position:fixed;
    top:0;
@@ -148,18 +220,26 @@ main.on #scene1{
    padding:0;
 }
 #message{
+    background-color: #023d3acc;
     margin-top: var(--space);
-    display: none;
-    max-width: 900px;
+    padding: var(--space);
+    position: fixed;
+    top:0;
     margin:0 auto;
+    z-index: 2;
+    left:auto;
+    right:0;
+    width:calc(25% - (var(--space) * 2));
 }
-#capture-remove{
-    display: none;
+#message > *{
+    max-width: 900px;
 }
-#capture-remove.on{
-    display: inline-block;
+#message > span{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
-main.on #message{
+main #message{
   display: block;
 }
 #num{
@@ -167,44 +247,31 @@ main.on #message{
     color: var(--bg);
     padding: 5px;
     min-height: 1em;
+    margin-top: var(--space);
+    margin-bottom: 0;
 }
 #copy-text{
     border:none;
     width: 25px;
     height: 25px;
+    overflow: visible;
     margin: 0;
     padding: 0;
+    margin: 0;
+    margin-top:3px;
 }
 #copy-text:hover{
     opacity: 0.8;
 }
 #copy-text svg{
+    height:25px;
     width: 25px;
 }
 canvas{
-    opacity: 0.5;
-    z-index: -1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    opacity: 1;
 }
-#adjust-image{
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    margin-top:calc(var(--space)*2);
-    padding: 5px var(--space);
-    display: none;
-    border: 1px dotted;
-    
-}
-#adjust-image summary{
-  cursor: pointer;
-}
-#adjust-image.on{
-    display: block;
-}
+
+
 main.on canvas{
     opacity: 1;
     z-index: 1;
@@ -213,10 +280,44 @@ main.on canvas{
     top:auto;
     transform: none;
 }
+#zero.on, #one.on{
+    color: yellow;
+}
+#grid{
+    /* touch-action: none; */
+    touch-action: pan-x pan-y;
+}
+#grid.panning{
+    touch-action: pan-x pan-y;
+}
+#pan-tool{
+    pointer-events: none;
+    display: none;
+    position: fixed;
+    right: calc(50vw - 31px);
+    z-index: 2;
+    bottom: calc((50vh - 184px)/2);
+}
+main{
+    touch-action: none;
+}
+main.intro-body{
+    touch-action: auto;
+}
+html, body {touch-action: none;}
+/* canvas{
+    touch-action: pan-x pan-y pinch-zoom;
+} */
+body.intro-body, html.intro-body{
+    touch-action: auto;
+}
 .settings{
     display: flex;
-    width: 100%;
-    margin-top: var(--space);    
+    position:fixed;
+    top:0;
+    z-index: 9;
+    right:0;
+    padding: var(--space);    
     font-style: italic;
     justify-content: space-between;
 }
@@ -227,46 +328,42 @@ main.on canvas{
     text-align: center;
     
 }
-#scene1{
-    background-color: #023d3ad2;
-    margin-top: calc(var(--space) * 5);
-    height: calc(100vh - (var(--space)* 6));
-    align-items: center;
-    justify-content: center;
-}
-#scene1 p:last-child{
-    text-align: center;
-}
-#scene1 svg{
-    padding: var(--space);
-    width: 35vh;
-}
-#scene1 button{
-    display: none;
-}
-#scene1.on button{
-    display: inline-block;
-}
+
 /* select{
     background-color: transparent;
     border:1px solid white;
     padding: 
 } */
+ #mobile-only{
+    display: none;
+ }
 #copy-success{
     pointer-events: none;
     position: fixed;
     opacity: 0;
     z-index: 2;
+    margin:0;
+    margin-top:-40px;
+    margin-left:40px;
     transition:0.2s;
     color: var(--color-highlight);
 }
 #copy-success.on{
     opacity: 1;
 }
-@media(max-width: 768px){
+#back-to-all{
+    position:fixed;
+    bottom:0;
+    left:0;
+
+}
+#back-to-all a{
+    text-decoration: none;
+}
+@media(max-width: 900px){
     :root{
         --space: 15px;
-        --font-size: 18px;
+        --font-size: 24px;
     }
     canvas{
         margin-top:24px;
@@ -281,11 +378,51 @@ main.on canvas{
     #scene2{
         margin-top: calc(var(--space) * 3);
     }
+    #pan-tool{
+
+        display: flex;
+        z-index: 3;
+        user-select: none;
+        padding: 5px;
+        display: none;
+    }
+    #pan-tool svg{
+        width: 50px;
+        height: 50px;
+    }
+    #pan-tool.on {
+        transform: scale(1.2);
+        box-shadow:rgb(243, 247, 225) 0px 0px 12px;
+    }
+    #message{
+        left:0;
+        right:auto;
+        width:calc(100% - (var(--space) * 2));
+    }
+    #mobile-only{
+        display: inline;
+    }
+    #mobile-only svg{
+        width: 20px;
+        height:20px;
+        padding:0 5px;
+    }
     #adjust-image{
         margin-top:var(--space);
     }
     .settings{
         font-size: 16px;
+    }
+    #grid{
+        left:0;
+        width: calc(100vw );
+        height: calc(100vh - 200px);
+        overflow: scroll;
+        top:0;
+        position: absolute;
+        padding: 0;
+        padding-top: 200px;
+        background-color: black;
     }
     .settings button{
         padding: 3px 8px;
@@ -297,8 +434,12 @@ main.on canvas{
         height: calc(100vh - (var(--space)*4));
         width: calc(100vw - (var(--space)*4));
     }
+    #info{
+        padding: 0px 8px;
+    }
     #message{
         padding: var(--space);
+        padding-bottom: 0;
     }
     
 }
