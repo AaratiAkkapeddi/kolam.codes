@@ -103,18 +103,7 @@ document.querySelector("#copy-text").addEventListener("click", function(){
 
 
 
-function flipNumbers(){
-   coords.forEach((coord, index) => {
-    if(!fixed.includes(index)){
-      if(coord.num == "1"){
-        coord.num = "0"
-      }else if(coord.num == "0"){
-        coord.num = "1"
-      }
-    }
-  });
-  processNums(coords);
-}
+
 
 
 
@@ -137,13 +126,11 @@ function fromBinaryString(str) {
 }
 // Convert Binary Back to Text
 function binaryToText(bin) {
-  console.log(bin)
   const bytes = [];
   for (let i = 0; i < bin.length; i += 8) {
     bytes.push(parseInt(bin.slice(i, i + 8), 2)); // Convert each 8-bit binary segment back to an integer
   }
   const txt = new TextDecoder().decode(new Uint8Array(bytes)); // Decode the bytes back into a string
-  console.log(txt)
   return txt;
 
 }
@@ -192,12 +179,12 @@ function setup() {
 
   
   if(window.innerWidth < 768) {
-    c = createCanvas(window.innerWidth * 2.9, window.innerWidth * 2.9 );
+    c = createCanvas(window.innerWidth * 1, window.innerWidth * 1 );
   }else if(window.innerWidth < 900){
-    c = createCanvas(window.innerWidth * 1.8, window.innerWidth * 1.8);
+    c = createCanvas(window.innerWidth * 1, window.innerWidth * 1);
 
   }else{
-    c = createCanvas(window.innerWidth, window.innerWidth);
+    c = createCanvas(window.innerHeight, window.innerHeight);
   }
   c.parent("#grid")
   background(0);
@@ -205,12 +192,12 @@ function setup() {
   makeGrid(dotCount);
   if(window.innerWidth < 768){
     var overflowContainer = document.querySelector('#grid');
-    console.log(overflowContainer)
+
     overflowContainer.scrollLeft = (((window.innerWidth * 2.9))/2 + 50)/1.45;
     overflowContainer.scrollTop = 70;
   }else if(window.innerWidth < 900){
     var overflowContainer = document.querySelector('#grid');
-    console.log(overflowContainer)
+
     overflowContainer.scrollLeft = (((window.innerWidth * 2))/2 + 50)/2.3;
     overflowContainer.scrollTop = 100;
   }
@@ -287,45 +274,44 @@ function makeGrid(dotCount) {
   coords[fixed[1]].num = "1"
 }
 
-function mousePressed(){
-    if(!panning){
-    coords.forEach((coord, index) => {
-      if(!fixed.includes(index)){
-      if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-        if(coord.num == ""){
-          currNum = "0";
-        }else if(coord.num == "0"){
-          currNum = "1"
-        }else if(coord.num == "1"){
-          currNum = ""
-        }
-      }
-    }
-    });
-  }
-}
+// function mousePressed(){
+//     if(!panning){
+//     coords.forEach((coord, index) => {
+//       if(!fixed.includes(index)){
+//       if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+//         //index
+//         currNum = fullString[index];
+
+//         if(coord.num == ""){
+//           currNum = fullString[index];
+//         }
+//       }
+//     }
+//     });
+//   }
+// }
 function touchStarted(){
-  if(!panning){
+//   if(!panning){
 
 
-  coords.forEach((coord, index) => {
-    if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
-      if(coord.num == ""){
-        currNum = "0";
-      }else if(coord.num == "0"){
-        currNum = "1"
-      }else if(coord.num == "1"){
-        currNum = ""
-      }
-    }
-  });
-}
+//   coords.forEach((coord, index) => {
+//     console.log(index)
+//     if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+//       // currNum = fullString[index];
+//       currNum = fullString[index];
+//       if(coord.num == ""){
+//         currNum = fullString[index];
+//       }
+//     }
+//   });
+// }
 }
 function checkCoord() {
 if(!panning){
     coords.forEach((coord, index) => {
       if(!fixed.includes(index)){
           if (dist(coord.x, coord.y, mouseX, mouseY) < coord.size / 2) {
+            currNum = fullString[index];
             coord.num = currNum
           }
       }

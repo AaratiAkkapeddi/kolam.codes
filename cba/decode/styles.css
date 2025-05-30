@@ -363,7 +363,7 @@ body.intro-body, html.intro-body{
 @media(max-width: 900px){
     :root{
         --space: 15px;
-        --font-size: 24px;
+        --font-size: 20px;
     }
     canvas{
         margin-top:24px;
@@ -379,10 +379,12 @@ body.intro-body, html.intro-body{
         margin-top: calc(var(--space) * 3);
     }
     #pan-tool{
+
         display: flex;
         z-index: 3;
         user-select: none;
         padding: 5px;
+        display: none;
     }
     #pan-tool svg{
         width: 50px;
@@ -413,14 +415,13 @@ body.intro-body, html.intro-body{
     }
     #grid{
         left:0;
-        width: calc(100vw - 100px);
-        height: calc(100vh - 350px);
+        width: calc(100vw );
+        height: calc(100vh - 200px);
         overflow: scroll;
         top:0;
         position: absolute;
-        padding: 50px;
-        padding-top: 300px;
-        padding-bottom: 500px;
+        padding: 0;
+        padding-top: 200px;
         background-color: black;
     }
     .settings button{

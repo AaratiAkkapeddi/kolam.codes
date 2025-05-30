@@ -363,7 +363,7 @@ body.intro-body, html.intro-body{
 @media(max-width: 900px){
     :root{
         --space: 15px;
-        --font-size: 24px;
+        --font-size: 20px;
     }
     canvas{
         margin-top:24px;
