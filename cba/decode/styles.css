@@ -366,7 +366,7 @@ body.intro-body, html.intro-body{
         --font-size: 20px;
     }
     canvas{
-        margin-top:24px;
+        margin-top:0;
     }
     main{
         margin-top:var(--space);
