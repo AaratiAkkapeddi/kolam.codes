@@ -271,11 +271,11 @@ function insertSpaces(bincode){
 
 
         } else{
-           console.log(diff) 
+
         }
         
     }
-    console.log(txt2)
+
     return(txt2)
 
 }
