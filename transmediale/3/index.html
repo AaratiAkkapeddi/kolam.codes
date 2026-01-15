@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+    <title>Rituals of Recursion << Decoder>></title>
+</head>
+
+<body>
+    <main>
+        <!-- <div class="settings">
+       
+    
+        <button id="flip">0 ↔ 1</button>   
+    </div> -->
+
+
+        <div id="grid"> <button id="pan-tool"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 44L27.7735 34H16.2265L22 44ZM22 0L16.2265 10H27.7735L22 0ZM23 35L23 9H21L21 35H23Z"
+                        fill="white" />
+                    <path d="M0 22L10 27.7735V16.2265L0 22ZM44 22L34 16.2265V27.7735L44 22ZM9 23H35V21H9V23Z"
+                        fill="white" />
+                </svg>
+            </button> </div>
+
+        <div id="message">
+            <span>
+                Translation:
+                <button id="info">info</button>
+                <button id="back-to-all"><a href="../">back to all kolams</a></button>
+            </span>
+            <p id="num">
+
+            </p>
+            <button id="copy-text"><svg width="51" height="48" viewBox="0 0 51 48" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="37" height="34" rx="3" stroke="white" stroke-width="2" />
+                    <rect x="13" y="13" width="37" height="34" rx="3" stroke="white" stroke-width="2" />
+                </svg>
+            </button>
+            <div id="copy-success">copied text</div>
+
+        </div>
+        <div class="success-modal">
+            <h1>జాల</h1>
+            <p><em>jāla</em><br>network, web, mesh</p>
+            <svg width="100" height="98" viewBox="0 0 100 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="31.7861" cy="5" r="5" fill="white" />
+                <circle cx="5" cy="43.1699" r="5" fill="white" />
+                <circle cx="65.2686" cy="92.7236" r="5" fill="white" />
+                <circle cx="65.2686" cy="28.4375" r="5" fill="white" />
+                <circle cx="51.876" cy="51.873" r="5" fill="white" />
+                <circle cx="94.0635" cy="51.873" r="5" fill="white" />
+                <circle cx="26.7861" cy="87.7236" r="5" fill="white" />
+                <path
+                    d="M27.9245 89.3704L51.8255 53.5184M53.3708 51.2005L66.7639 93.3883L96.2284 51.8702L66.0943 29.7718M53.3708 51.2005L51.8255 53.5184M53.3708 51.2005L66.0943 29.7718M66.0943 29.7718L32.6119 5.66455L3.14746 44.5042L51.8255 53.5184"
+                    stroke="white" stroke-width="2" />
+                <path d="M64.0859 95.3975L67.4336 30.4419" stroke="white" stroke-width="2" />
+                <path d="M97.5684 53.2095L26.585 90.04" stroke="white" stroke-width="2" />
+            </svg>
+            <a href="../index.html" class="button">back to kolams</a>
+        </div>
+
+        <div class="instruction-modal">
+
+            <p>
+                Click and drag over each box in the matrix to reveal it as a 1, 0, or blank based on color. The center
+                is always blank. As you fill the matrix, the translated message will update at the top of this page.
+                Please note until you fully complete the matrix, you may see nonsensical text.</p><button
+                id="ok">ok</button> <br><button><a href="../">← back to all kolams</a></button>
+        </div>
+    </main>
+    <script type="text/javascript">
+        let dotCount = 13;
+        let fullString = "11100000101100001001.11001110...00001011.....00001011...11101110.00001011000010110010"
+        let fixed = [3, 2, 20, 29, 30, 31, 40, 41, 42, 43, 44, 53, 54, 55, 64]
+        let url = "../assets/jala.png"
+
+    </script>
+    <script src="../main.js"></script>
+</body>
+
+</html>
