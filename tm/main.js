@@ -64,11 +64,17 @@ document.addEventListener("touchend", function(){
 document.querySelector("#ok").addEventListener("click", function(){
   document.querySelector('.instruction-modal').classList.add('close')
 });
+document.querySelector("#about-ok").addEventListener("click", function(){
+  document.querySelector('.about-modal').classList.add('close')
+});
 // document.querySelector("#close-success").addEventListener("click", function(){
 //   document.querySelector('.success-modal').classList.remove('on')
 // });
 document.querySelector("#info").addEventListener("click", function(){
   document.querySelector('.instruction-modal').classList.remove('close')
+});
+document.querySelector("#about").addEventListener("click", function(){
+  document.querySelector('.about-modal').classList.remove('close')
 });
 
 document.querySelector("#copy-text").addEventListener("click", function(){
@@ -165,8 +171,9 @@ function processNums(arr) {
   //     churChar += char;
   //   }
   // });
-  // Replace � with ...
+  // Replace � 􏿮with ...
   message = message.replace(/�/g, '...');
+  message = message.replace(/􏿮/g, '...');
   message = message.trim();
 
   document.querySelector("#num").innerHTML = message;
@@ -258,7 +265,7 @@ function makeGrid(dotCount) {
         stroke(255, 255,255 ,100);
         strokeWeight(0.5)
         coords.push(
-          new Digit(x * fw + fw / 2, y * fy + fy / 2, dotRadius * 9, "")
+          new Digit(x * fw + fw / 2, y * fy + fy / 2, dotRadius * 9, "", count)
         );
 
         count += 1;
@@ -331,18 +338,28 @@ function checkCoord() {
 
 function checkCompletion() {
   let allFilled = true;
+  let filledCount = 0;
+  let totalCount = 0;
   
   coords.forEach((coord, index) => {
-    // Check if this coordinate is not fixed and is still empty
-    if (!fixed.includes(index) && coord.num === "") {
-      allFilled = false;
+    // Only count non-fixed coordinates
+    if (!fixed.includes(index)) {
+      totalCount++;
+      if (coord.num !== "") {
+        filledCount++;
+      } else {
+        allFilled = false;
+      }
     }
   });
+
+  // Update progress display
+  const remaining = totalCount - filledCount;
+  document.querySelector("#progress").innerHTML = `${remaining} boxes remaining`;
 
   if (allFilled && !completed) {
     completed = true;
     document.querySelector('.success-modal').classList.add('on');
-
   }
 }
 
@@ -350,27 +367,31 @@ function checkCompletion() {
 
 
 class Digit {
-  constructor(x, y, size, num) {
+  constructor(x, y, size, num, index) {
     // This code runs once when an instance is created.
     this.x = x;
     this.y = y;
     this.size = size;
     this.num = num;
+    this.index = index;
   }
 
   show() {
     // This code runs once when myFrog.show() is called.
 
-    fill(0, 0, 0, 10);
+    fill(2, 61, 58, 80);
     if(this.num == "1" ){
       fill(74,42,41, 200);
     }else if(this.num == "0"){
       fill(82, 117, 57, 200);
     }else{
-      fill(0, 0, 0, 10);
+      fill(2, 61, 58, 80);
     }
-    stroke(255, 255,255 ,100);
-    strokeWeight(0.5)
+    stroke(255, 255,255, 255);
+    if(fixed.includes(this.index) && (this.index != 2 && this.index != 3)){
+      noStroke();  // No border for positions that are always blank
+    }
+    strokeWeight(0.75);
     rect(this.x, this.y, this.size, this.size);
     fill(255);
     noStroke();

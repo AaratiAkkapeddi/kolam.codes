@@ -31,13 +31,15 @@
 
         <div id="message">
             <span>
-                Translation:
-                <button id="info">info</button>
-                <button id="back-to-all"><a href="../">back to all kolams</a></button>
+
+                <button id="info">directions</button>
+                <button id="about">about</button>
+                <button id="back-to-all"><a href="../">select a different kolam</a></button>
             </span>
             <p id="num">
 
             </p>
+            <div id="progress"></div>
             <button id="copy-text"><svg width="51" height="48" viewBox="0 0 51 48" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <rect x="1" y="1" width="37" height="34" rx="3" stroke="white" stroke-width="2" />
@@ -57,17 +59,27 @@
                     d="M6.54004 48.8968C22.3881 30.1468 61.0486 -5.47819 88.9062 2.02179C123.728 11.3968 108.326 51.5758 142.478 67.6473C176.63 83.7188 196.72 60.2812 204.756 70.9955C212.791 81.7099 201.407 107.156 207.434 112.514C212.256 116.799 216.14 123.228 217.479 125.907"
                     stroke="white" stroke-width="2" />
             </svg>
-            <a href="../index.html" class="button">back to all kolams</a>
+            <a href="../index.html" class="button">decode a different kolam</a>
 
         </div>
 
         <div class="instruction-modal">
 
             <p>
-                Click and drag over each box in the matrix to reveal it as a 1, 0, or blank based on color. The center
-                is always blank. As you fill the matrix, the translated message will update at the top of this page.
-                Please note until you fully complete the matrix, you may see nonsensical text.</p><button
-                id="ok">ok</button> <br><button><a href="../">← back to all kolams</a></button>
+                Click and drag over each box to reveal a 1 or 0. The center
+                is always blank. As you fill the matrix, the translation will update.
+                You must <em>complete</em> the matrix, to reveal the full message.</p><button
+                id="ok">ok</button> 
+        </div>
+        <div class="about-modal close">
+
+            <p>
+                In 2022, while mourning my centenarian grandmother, I developed a program that translates text into Kolam designs using binary code as an intermediary. Kolam (or Muggu) is a traditional South Indian art form—rice flour drawings on the floor, traditionally practiced by women, comprising mathematically complex patterns with continuous intertwined lines. Through this translation process, I trace connections between kolams, gender, and computation, honoring computational lineage outside Western patriarchal academic frameworks. My initial work developed a matrilineal mourning ritual, translating the names of three generations of women into kolams: Swarajyalaxmi (my grandmother), Kameswaramma (her mother), and Rajyalaxmi (her grandmother). At transmediale, I use this system to draw kolams with rice flour and turmeric, each containing encrypted messages visitors can decode on this website, where they can also encode their own kolams. You can read more <a href='./about.html'>here</a>.
+            </p>
+
+                
+                <button
+                id="about-ok">back to decoding</button> 
         </div>
     </main>
     <script type="text/javascript">

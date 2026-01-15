@@ -1,8 +1,8 @@
 :root{
     --bg: #023d3a;
     --space: 25px;
-    --font-size: 24px;
-    --color: white;
+    --font-size: 20px;
+    --color:rgb(243, 247, 225);
     --color-highlight: rgb(243, 247, 225);
 }
 body *{
@@ -25,6 +25,8 @@ a, a:visited, a:link, a:focus{
 }
 #home-intro{
     max-width: 100%;
+    text-align: center;
+    margin: var(--space);
 }
 .success-modal{
     position: fixed;
@@ -39,19 +41,32 @@ a, a:visited, a:link, a:focus{
     flex-direction: column;
     z-index: 10;
     color: var(--color-highlight);
-    font-size: calc(var(--font-size) * 1.5);
     text-align: center;
     opacity: 0;
-    transition: 1s;
+    transition: 2s;
     pointer-events: none;
+}
+.success-modal p{
+    font-size: calc(var(--font-size) * 1.5);
+}
+.success-modal h1{
+    font-size: calc(var(--font-size) * 2.2);
+    margin-bottom: calc(var(--space)/2);
+}
+.success-modal .button{
+    margin-top: calc(var(--space) * 4);
 }
 .success-modal svg{
     padding: calc(var(--space)) 0;
     padding-bottom: calc(var(--space) *2);
+    text-shadow: 0px 0px 15px #00fff2;
 }
 .success-modal.on{
     opacity: 1;
     pointer-events: all;
+}
+.success-modal h1, .success-modal p{
+    text-shadow: 0px 0px 45px #00fff2;
 }
 a:hover{
     color:powderblue;
@@ -65,11 +80,16 @@ body > button{
 }
 #about{
     position:fixed;
-    top:0;
+    bottom:0;
     text-decoration: none;
     right:0;
     background-color: var(--bg);
     padding:10px 15px;
+}
+#message #about{
+    bottom:0;
+    padding: var(--space);
+    margin: 0;
 }
 img{
     filter:invert(1);
@@ -134,18 +154,18 @@ input{
     padding: 3px 5px;
     max-width: calc(100% - 50px);
     margin-top:24px;
-    color:white;
+    color:var(--color);
     text-transform: lowercase;
     background-color: var(--bg);
-    border:1px dotted white;
+    border:1px dotted var(--color);
     position:relative;
     font-family: inherit;
     z-index: 1;
 }
 button,select{
     background-color: #023d3acc;
-    color:white;
-    border:1px dotted white;
+    color:var(--color);
+    border:1px dotted var(--color);
     padding: 3px 10px;
     font-size: var(--font-size);
     font-family: inherit;
@@ -193,7 +213,7 @@ canvas{
     background-color: #023d3a;
     z-index: 2;
     border: 1px solid;
-    top:var(--space);
+    bottom:var(--space);
     left: var(--space);
     border:none;
     text-decoration: underline;
@@ -204,7 +224,7 @@ canvas{
     z-index: 2;
     padding:3px 10px;
     border: 1px solid;
-    top:var(--space);
+    bottom:var(--space);
     right: var(--space);
     border:none;
     text-decoration: underline;
@@ -212,10 +232,10 @@ canvas{
 #encode a, #about a{
     text-decoration: none;
 }
-.instruction-modal button a{
+.instruction-modal button a, .about-modal button a{
     text-decoration: none;
 }
-.instruction-modal{
+.instruction-modal, .about-modal{
     position:fixed;
     top:0;
     left:0;
@@ -228,17 +248,23 @@ canvas{
     height: calc(100vh - (var(--space)*2));
     width: calc(100vw - (var(--space)*2));
 }
-.instruction-modal p{
+.instruction-modal p, .about-modal p{
     max-width: 800px;
 }
 #info{
     user-select: none;
     margin:0;
 }
-main .instruction-modal{
+#info{
+    padding: var(--space);
+    position: fixed;
+    top:0;
+    left:0;
+}
+main .instruction-modal, main .about-modal{
     display: flex;
 }
-main .instruction-modal.close{
+main .instruction-modal.close, main .about-modal.close{
     display: none;
 }
 
@@ -285,7 +311,9 @@ main #message{
     margin-top: var(--space);
     margin-bottom: 0;
     text-align: center;
+    font-size: calc(var(--font-size) * 1.3);
 }
+
 #copy-text{
     border:none;
     width: 25px;
@@ -310,6 +338,10 @@ canvas{
 video{
     width: 50%;
 }
+.figcaption{
+    font-size: calc(var(--font-size)/1.2);
+
+}
 
 main.on canvas{
     opacity: 1;
@@ -319,8 +351,18 @@ main.on canvas{
     top:auto;
     transform: none;
 }
+#ok{
+    border:1px solid;
+    text-decoration: none;
+}
 #zero.on, #one.on{
     color: yellow;
+}
+#progress{
+    font-size: calc(var(--font-size)/1.1);
+    text-align: center;
+    font-weight: normal;
+    text-shadow: 0px 0px 28px #00fff2;
 }
 #grid{
     /* touch-action: none; */
@@ -370,7 +412,7 @@ body.intro-body, html.intro-body{
 
 /* select{
     background-color: transparent;
-    border:1px solid white;
+    border:1px solid var(--color);
     padding: 
 } */
  #mobile-only{
@@ -397,7 +439,14 @@ body.intro-body, html.intro-body{
 
 }
 #nav-about{
+    background: linear-gradient(180deg,rgba(2, 61, 58, 1) 85%, rgba(255, 255, 255, 0) 100%);;
+    width: calc(100% - var(--space) * 2);
+    top:0;
+    left:0;
+    padding: var(--space);
+    position: fixed;
     display: flex;
+    z-index: 2;
     justify-content: space-between;
 }
 #back-to-all a{
@@ -406,7 +455,7 @@ body.intro-body, html.intro-body{
 @media(max-width: 900px){
     :root{
         --space: 15px;
-        --font-size: 20px;
+        --font-size: 17px;
     }
     canvas{
       margin-top:-24px;
@@ -429,12 +478,23 @@ body.intro-body, html.intro-body{
         padding: 5px;
         display: none;
     }
+    #message #about{
+        bottom: auto;
+        top: 0;
+        padding: var(--space);
+        margin: 0;
+    }
     #pan-tool svg{
         width: 50px;
         height: 50px;
     }
     video{
-        width: 100%;
+        width: 80%;
+        margin:0 auto;
+        display: block;
+    }
+    img.chart{
+        max-height: 35vh
     }
     #pan-tool.on {
         transform: scale(1.2);
@@ -447,6 +507,10 @@ body.intro-body, html.intro-body{
     }
     #mobile-only{
         display: inline;
+    }
+    img{
+        max-height: 50vh;
+        margin-bottom:0;
     }
     #mobile-only svg{
         width: 20px;
@@ -474,15 +538,16 @@ body.intro-body, html.intro-body{
         padding: 3px 8px;
         font-size: 16px;
     }
-    .instruction-modal{
+    .instruction-modal, .about-modal{
         max-width: none;
         padding: calc(var(--space)* 2);
         height: calc(100vh - (var(--space)*4));
         width: calc(100vw - (var(--space)*4));
     }
-    #info{
-        padding: 0px 8px;
+    .instruction-modal p, .about-modal p{
+        text-align: center;
     }
+    
     #message{
         padding: var(--space);
         padding-bottom: 0;

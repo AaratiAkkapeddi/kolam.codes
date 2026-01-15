@@ -1,5 +1,7 @@
 :root{
     --bg: #023d3a;
+    --color: rgb(243, 247, 225);
+    --font-size: 20px;
 }
 /* The animation code */
 @keyframes update {
@@ -10,17 +12,17 @@
 body{
     margin:0;
     background-color: var(--bg);
-    color: white;
-    font-size: 24px;
+    color: var(--color);
+    font-size: var(--font-size);
     font-family: "Yatra One", serif;
     font-optical-sizing: auto;
 }
 h1{
-    font-size: 24px;
+    font-size: var(--font-size);
     font-weight: normal;
 }
 a, a:visited, a:link, a:focus{
-    color:white;
+    color:var(--color);
 }
 a:hover{
     color:powderblue;
@@ -79,24 +81,24 @@ h2{
     font-weight: normal;
 }
 input{
-    font-size: 24px;
+    font-size: var(--font-size);
     padding: 3px 5px;
     max-width: calc(100% - 50px);
     margin-top:24px;
-    color:white;
+    color:var(--color);
     text-transform: lowercase;
     background-color: var(--bg);
-    border:1px dotted white;
+    border:1px dotted var(--color);
     position:relative;
     font-family: inherit;
     z-index: 1;
 }
 button{
     background-color: var(--bg);
-    color:white;
-    border:1px dotted white;
+    color:var(--color);
+    border:1px dotted var(--color);
     padding: 3px 10px;
-    font-size: 24px;
+    font-size: var(--font-size);
     font-family: inherit;
     position:relative;
     z-index: 1;
@@ -163,12 +165,12 @@ video{
     }
     body, input, button{
 
-        font-size: 20px;
+        font-size: var(--font-size);
 
     }
     :root{
         --space: 15px;
-        --font-size: 20px;
+        --font-size: 17px;
     }
     /* button:last-child{
         display:none;
