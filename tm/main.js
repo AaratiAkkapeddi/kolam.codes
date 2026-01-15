@@ -174,6 +174,7 @@ function processNums(arr) {
   // Replace � 􏿮with ...
   message = message.replace(/�/g, '...');
   message = message.replace(/􏿮/g, '...');
+  message = message.replace(/\u{10FFFE}/gu, '...');
   message = message.trim();
 
   document.querySelector("#num").innerHTML = message;
