@@ -60,6 +60,13 @@ a, a:visited, a:link, a:focus{
     padding: calc(var(--space)) 0;
     padding-bottom: calc(var(--space) *2);
     text-shadow: 0px 0px 15px #00fff2;
+    width: 150px;
+    animation: squigglevision 0.4s infinite alternate;
+
+        /* Similar syntax to box-shadow */
+}
+.success-modal svg.jala-svg{
+    width: 100px;
 }
 .success-modal.on{
     opacity: 1;
@@ -455,24 +462,29 @@ body.intro-body, html.intro-body{
 
 @keyframes squigglevision {
   0% {
-    filter: url("#turbulence-1");
+    filter: url("#turbulence-1") drop-shadow( 0px 0px 15px #00fff2);
+    -webkit-filter: url("#turbulence-1") drop-shadow( 0px 0px 15px #00fff2);
   }
   25% {
-    filter: url("#turbulence-2");
+    filter: url("#turbulence-2") drop-shadow( 0px 0px 15px #00fff2);
+    -webkit-filter: url("#turbulence-2") drop-shadow( 0px 0px 15px #00fff2);
   }
   50% {
-    filter: url("#turbulence-3");
+    filter: url("#turbulence-3") drop-shadow( 0px 0px 15px #00fff2);
+    -webkit-filter: url("#turbulence-3") drop-shadow( 0px 0px 15px #00fff2);
   }
   75% {
-    filter: url("#turbulence-4");
-  }
+    filter: url("#turbulence-4") drop-shadow( 0px 0px 15px #00fff2);
+    -webkit-filter: url("#turbulence-4") drop-shadow( 0px 0px 15px #00fff2);
+
+}
   100% {
-    filter: url("#turbulence-5");
+    filter: url("#turbulence-5") drop-shadow( 0px 0px 15px #00fff2);
+    -webkit-filter: url("#turbulence-5") drop-shadow( 0px 0px 15px #00fff2);
   }
 }
-.success-modal svg{
-      animation: squigglevision 0.4s infinite alternate;
-}
+
+
 
 @media(max-width: 900px){
     :root{
