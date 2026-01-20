@@ -68,6 +68,9 @@ a, a:visited, a:link, a:focus{
 .success-modal svg.jala-svg{
     width: 100px;
 }
+.success-modal svg.jada{
+    width: 60px;
+}
 .success-modal.on{
     opacity: 1;
     pointer-events: all;

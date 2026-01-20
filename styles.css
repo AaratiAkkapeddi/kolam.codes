@@ -6,7 +6,43 @@
     from {opacity: 0;}
     to {opacity: 1;}
   }
-  
+#tm-alert{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #023d3a;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid white;
+    text-align: center;
+    z-index: 10;
+    font-size: 20px;
+    display: none;
+    font-size: calc(var(--font-size) * 1.2);
+    padding: 25px;
+    box-shadow: 0px 0px 30px rgba(243, 247, 225,0.5);
+}
+#tm-alert.show{
+    display: block;
+}
+
+#tm-alert p{
+    margin-top: 46px;
+}
+#tm-alert .button{
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid;
+}
+.close-btn{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+}
 body{
     margin:0;
     background-color: var(--bg);
