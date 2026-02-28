@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -16,8 +16,8 @@
 
 <body>
     <main class="about-main">
-        <div id="nav-about"><a href="./encode/index.html">encode a kolam</a>
-            <a class="button-decode" href="./index.html">decode a kolam</a>
+        <div id="nav-about"><a href="./encode/index.html">codificar un kolam</a>
+            <a class="button-decode" href="./index.html">decodificar un kolam</a>
 
         </div>
 
@@ -25,62 +25,52 @@
 
         <br><br>
         <p>
-            This work is made by <a target="_blank" href="https://aarati.online">Aarati
+            Este trabajo fue creado por <a target="_blank" href="https://aarati.online">Aarati
                 Akkapeddi</a>.</p>
 
         <p>
 
-I developed a program that translates text into Kolam designs using binary code. Kolam (or Muggu) is a South Indian tradition where women draw intricate rice flour patterns on the floor each morning. Through this translation, I trace connections between kolams, gender, and computation, honoring computational lineage outside Western patriarchal frameworks. I created this system in 2022 as a matrilineal mourning ritual, translating three names into kolams: Swarajyalaxmi (my late grandmother), Kameswaramma (her mother), and Rajyalaxmi (her grandmother). At transmediale, I expand this into a participatory installation, drawing kolams with rice flour and turmeric containing encrypted messages visitors can decode here, where they can also encode their own kolams.     </p>
+Desarrollé un programa que traduce texto en diseños de Kolam utilizando código binario. El Kolam (o Muggu) es una tradición del sur de la India en la que las mujeres dibujan intrincados patrones de harina de arroz en el suelo cada mañana. A través de esta traducción, trazo conexiones entre los kolams, el género y la computación, honrando el linaje computacional fuera de los marcos patriarcales occidentales. Creé este sistema en 2022 como un ritual de duelo matrilineal, traduciendo tres nombres en kolams: Swarajyalaxmi (mi difunta abuela), Kameswaramma (su madre) y Rajyalaxmi (la madre de su madre). En transmediale, lo amplío en una instalación participativa, dibujando kolams con harina de arroz y cúrcuma que contienen mensajes cifrados que los visitantes pueden decodificar aquí, donde también pueden codificar sus propios kolams.     </p>
 
-        <img alt="two versions of a kolam pattern, one showing the three different colors of curves and the other acting as a key showing which color corresponds to either 0, 1, or nothing"
+        <img alt="dos versiones de un patrón de kolam, una que muestra los tres colores diferentes de las curvas y la otra que actúa como clave mostrando qué color corresponde a 0, 1 o ninguno"
             src="../diagram.svg" />
-        <img alt="a chart shows what 8-digit sequences of 0 and 1 correspond to which letters of the alphabet"
-            class="chart" src="../chart.svg" /><p class="figcaption">key (note this key only shows latin characters but <a target="_blank"
-                href="https://www.rapidtables.com/convert/number/ascii-to-binary.html">there are binary translation
-                charts available online</a> for non-latin scripts as well):</p>
+        <img alt="un gráfico muestra qué secuencias de 8 dígitos de 0 y 1 corresponden a qué letras del alfabeto"
+            class="chart" src="../chart.svg" /><p class="figcaption">clave (nota: esta clave solo muestra caracteres latinos, pero <a target="_blank"
+                href="https://www.rapidtables.com/convert/number/ascii-to-binary.html">hay tablas de traducción binaria disponibles en línea</a> para escrituras no latinas también):</p>
         <br><br>
 
         
         <p>
 
-            To encode text into Kolam designs, I first translate each character into eight-digit binary codes (made from
-            only 0s and 1s). I then use an algorithm to map this translation onto a diamond-shaped matrix of dots. The
-            algorithm moves top to bottom and left to right, drawing loops on each dot that correspond with either 0 or
-            1 according to the binary code translation of the text. The algorithm connects these loops, making sure to
-            never connect loops associated with “0” to those associated with “1”. The center of the matrix contains
-            blank padding space, allowing the entire pattern to be distributed evenly on the matrix, preserving the
-            perfect square/diamond shape.
+            Para codificar texto en diseños de Kolam, primero traduzco cada carácter en códigos binarios de ocho dígitos (compuestos únicamente de 0 y 1). Luego utilizo un algoritmo para mapear esta traducción en una matriz de puntos con forma de diamante. El algoritmo se mueve de arriba a abajo y de izquierda a derecha, dibujando bucles en cada punto que corresponden a 0 o 1 según la traducción en código binario del texto. El algoritmo conecta estos bucles, asegurándose de nunca conectar los bucles asociados con "0" a los asociados con "1". El centro de la matriz contiene espacio de relleno en blanco, lo que permite que el patrón completo se distribuya uniformemente en la matriz, preservando la forma perfecta de cuadrado/diamante.
         </p>
-        <p>example with english:</p>
+        <p>ejemplo en inglés:</p>
 
  <video muted autoplay loop controls>
             <source src="../cba/video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            Tu navegador no soporta la etiqueta de video.
         </video>
-       <p>example with telugu:</p>
+       <p>ejemplo en telugu:</p>
         <video muted autoplay loop controls>
             <source src="../cba/telugu.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            Tu navegador no soporta la etiqueta de video.
         </video>
         
         <br><br>
-        References/Further Reading:
+        Referencias/Lecturas adicionales:
 
         <ul>
-            <li><a target="_blank" href="https://aarati.online/rituals-of-recursion">exhibition at Spill 180</a></li>
+            <li><a target="_blank" href="https://aarati.online/rituals-of-recursion">exposición en Spill 180</a></li>
             <li><a target="_blank"
                     href="https://web.archive.org/web/20160309222916/http://www.cmi.ac.in/gift/Kolam.htm"> Dr. Gift
                     Siromoney </a></li>
             <li><a target="_blank"
                     href="https://www.sciencefriday.com/educational-resources/write-your-name-in-binary-code/">Science
-                    Friday: Write Your Name in Binary code</a></li>
+                    Friday: Escribe tu nombre en código binario</a></li>
             <li><a target="_blank" href="https://2025.algorithmicpattern.org/proceedings/S9NXAC/paper.html">Lavannya
                     Suressh</a></li>
-            <li><a target="_blank" href="https://www.are.na/block/41443072">The Kolam Tradition: A tradition of
-                    figure-drawing in southern India expresses mathematical ideas and has attracted the attention of
-                    computer science by Marcia Ascher</a></li>
-            <li><a target="_blank" href="https://www.sahapedia.org/significance-of-kolam-tamil-culture">Kolam: Floor Art
-                    of Tamil Nadu</a></li>
+            <li><a target="_blank" href="https://www.are.na/block/41443072">La tradición Kolam: una tradición de dibujo de figuras en el sur de la India que expresa ideas matemáticas y ha atraído la atención de las ciencias de la computación, por Marcia Ascher</a></li>
+            <li><a target="_blank" href="https://www.sahapedia.org/significance-of-kolam-tamil-culture">Kolam: Arte en el suelo de Tamil Nadu</a></li>
         </ul><br>
 
     </main>
