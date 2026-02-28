@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+    <title>Rituals of Recursion << Decoder>></title>
+</head>
+
+<body>
+    <main>
+        <!-- <div class="settings">
+       
+    
+        <button id="flip">0 ↔ 1</button>   
+    </div> -->
+
+
+        <div id="grid"> <button id="pan-tool"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 44L27.7735 34H16.2265L22 44ZM22 0L16.2265 10H27.7735L22 0ZM23 35L23 9H21L21 35H23Z"
+                        fill="white" />
+                    <path d="M0 22L10 27.7735V16.2265L0 22ZM44 22L34 16.2265V27.7735L44 22ZM9 23H35V21H9V23Z"
+                        fill="white" />
+                </svg>
+            </button> </div>
+
+        <div id="message">
+            <span>
+
+                <button id="info">directions</button>
+                <button id="about">sobre</button>
+                <button id="back-to-all"><a href="../">decodificar un kolam diferente</a></button>
+            </span>
+            <p id="num">
+
+            </p>
+            <div id="progress"></div>
+            <button id="copy-text"><svg width="51" height="48" viewBox="0 0 51 48" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="37" height="34" rx="3" stroke="white" stroke-width="2" />
+                    <rect x="13" y="13" width="37" height="34" rx="3" stroke="white" stroke-width="2" />
+                </svg>
+            </button>
+            <div id="copy-success">copied text</div>
+
+        </div>
+        <div class="success-modal">
+            <h1>Murali Akkapeddi</h1>
+            <p>Mi difunto tío que falleció en 2025</p>
+    
+            <a href="../index.html" class="button">decodificar un kolam diferente</a>
+        </div>
+
+        <div class="instruction-modal">
+
+            <p>
+                 Decodifica el kolam haciendo clic y arrastrando cada casilla para revelar un 1 o un 0. El centro siempre está en blanco. A medida que llenas la matriz, la traducción se actualiza. Debes completar la matriz para revelar el mensaje completo.</p><button
+                id="ok">ok</button> 
+        </div>
+        <div class="about-modal close">
+
+            <p>
+Desarrollé un programa que traduce texto a diseños de kolams mediante código binario. El kolam (o muggu) es una tradición del sur de la India en la que las mujeres dibujan intrincados patrones de harina de arroz en el suelo cada mañana. A través de esta traducción, busco conexiones entre los kolams, el género y la computación, honrando el linaje computacional más allá de los marcos patriarcales occidentales. Creé este sistema en 2022 como un ritual de duelo matrilineal, traduciendo tres nombres a kolams: Swarajyalaxmi (mi difunta abuela), Kameswaramma (su madre) y Rajyalaxmi (su abuela). En transmediale, lo desarrollo en una instalación participativa, dibujando kolams con harina de arroz y cúrcuma que contienen mensajes encriptados que los visitantes pueden decodificar aquí, donde también pueden codificar sus propios kolams. Puedes leer más sobre la obra <a href='../about.html'>aquí</a>.            </p>
+
+                
+                <button
+                id="about-ok">volver a decodificar</button> 
+        </div>
+    </main>
+    <script type="text/javascript">
+     let dotCount = 21;
+    let fullString = "011011010111010101110010011000010110110001.1010010010000.00110101101110...01001101001011.....1001101101000.........0110111001100.....00100100000011...00001011010110.1101011011000.010111000001100101011001000110010001101001"
+    let fixed = [0, 1, 42, 56, 71, 72, 73, 88, 89, 90, 91, 92, 106, 107, 108, 109, 110, 111, 112, 113, 114, 128, 129, 130, 131, 132, 147, 148, 149, 164, 178]
+     let url = "../../decode/assets/murali.jpg"
+
+    </script>
+    <script src="../main.js"></script>
+</body>
+
+</html>
